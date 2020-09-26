@@ -13,10 +13,13 @@
     <div id="main">
       <div class="form">
         <div class="form-group">
-          <input type="email" v-model="email" aria-describedby="emailHelp" placeholder="Enter your e-mail">
+          <input type="password" placeholder="Create new password">
+        </div>
+        <div class="form-group">
+          <input type="password" placeholder="Create new password">
         </div>
       <div class="button">
-        <button id="submit-btn">Confirm</button>
+        <button id="submit-btn">Reset Password</button>
       </div>
     </div>
   </div>
@@ -24,7 +27,7 @@
 
 <script>
 export default {
-  name: 'ForgotPassword'
+  name: 'NewPassword'
 }
 </script>
 

@@ -11,7 +11,7 @@
       we cover all of that for you!
     </label>
     <div id="main">
-      <div class="body-form">
+      <div class="form">
         <div class="form-group">
           <input type="email" v-model="email" aria-describedby="emailHelp" placeholder="Enter your e-mail">
         </div>
@@ -92,7 +92,7 @@ export default {
 }
 .button button {
     width: 100%;
-    height: 40px;
+    height: 45px;
     border: none;
     border-radius: 12px;
     box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);

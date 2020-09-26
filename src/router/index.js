@@ -6,7 +6,7 @@ import Login from '../views/Auth/Login/Login.vue'
 import Register from '../views/Auth/Register/Register.vue'
 import CreatePin from '../views/Auth/CreatePin/CreatePin.vue'
 import ForgotPassword from '../views/Auth/ForgotPassword/ForgotPassword.vue'
-import NewPassword from '../views/Auth/NewPassword/NewPassword.vue'
+import NewPassword from '../views/Auth/ForgotPassword/NewPassword.vue'
 
 Vue.use(VueRouter)
 

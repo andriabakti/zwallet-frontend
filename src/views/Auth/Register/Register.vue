@@ -90,7 +90,7 @@ export default {
 }
 .button button {
     width: 100%;
-    height: 40px;
+    height: 45px;
     border: none;
     border-radius: 12px;
     box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
