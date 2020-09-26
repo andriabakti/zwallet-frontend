@@ -19,6 +19,7 @@
           <input type="password" v-model="password" placeholder="Enter your password">
         </div>
         <p id="forgot" @click="toForgotPassword">Forgot Password?</p>
+        <p id="pin" @click="toCreatePin">Set up your PIN here!</p>
       </div>
       <div class="button">
         <button id="submit-btn">Login</button>
@@ -40,6 +41,9 @@ export default {
     toRegister () {
       this.$router.push('sign-up')
     },
+    toCreatePin () {
+      this.$router.push('create-pin')
+    },
     toForgotPassword () {
       this.$router.push('forgot-password')
     }
@@ -50,77 +54,77 @@ export default {
 <style scoped>
 /* Right Side */
 #right {
-    padding: 100px 100px 50px 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    background:#FAFCFF;
+  padding: 100px 100px 50px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  background:#FAFCFF;
 }
 #right-subtitle {
-    font-weight: bold;
-    font-size: 24px;
-    color: #3A3D42;
+  font-weight: bold;
+  font-size: 24px;
+  color: #3A3D42;
 }
 #right-description {
-    font-size: 16px;
-    color: rgba(58, 61, 66, 0.6);
-    margin-top: 20px;
-    line-height: 30px;
+  font-size: 16px;
+  color: rgba(58, 61, 66, 0.6);
+  margin-top: 20px;
+  line-height: 30px;
 }
 
 /* Form */
 .form-group input {
-    width: 100%;
-    height: 37px;
-    font-size: 16px;
-    border-style: none;
-    border-bottom: 1.5px solid rgba(169, 169, 169, 0.6);
-    background: #FAFCFF;
-    margin-top: 40px;
+  width: 100%;
+  height: 37px;
+  font-size: 16px;
+  border-style: none;
+  border-bottom: 1.5px solid rgba(169, 169, 169, 0.6);
+  background: #FAFCFF;
+  margin-top: 40px;
 }
-#forgot {
-    font-weight: 600;
-    font-size: 14px;
-    text-align: right;
-    color: rgba(58, 61, 66, 0.8);
-    cursor: pointer;
+#forgot, #pin {
+  font-weight: 600;
+  font-size: 14px;
+  text-align: right;
+  color: rgba(58, 61, 66, 0.8);
+  cursor: pointer;
 }
 
 /* Button */
 .button {
-    margin-top: 70px;
+  margin-top: 70px;
 }
 .button button {
-    width: 100%;
-    height: 45px;
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
-    text-align: center;
-    font-weight: bold;
-    font-size: 18px;
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
 }
 /* Inactive Button */
 #submit-btn {
-    background: #DADADA;
-    color: #88888F;
+  background: #DADADA;
+  color: #88888F;
 }
 /* Active Button */
-.button-hover {
-    background-color: #7E98DF !important;
-    color: #ffffff !important;
-}
+/* .button-hover {
+  background-color: #6379F4 !important;
+  color: #ffffff !important;
+} */
 
 /* Register */
 .register {
-    font-size: 16px;
-    color: rgba(58, 61, 66, 0.8);
-    text-align: center;
-    margin-top: 40px;
+  font-size: 16px;
+  color: rgba(58, 61, 66, 0.8);
+  text-align: center;
+  margin-top: 40px;
 }
 #link {
-    color: #6379F4;
-    font-weight: 600;
-    cursor: pointer;
+  color: #6379F4;
+  font-weight: 600;
+  cursor: pointer;
 }
 </style>

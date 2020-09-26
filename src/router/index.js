@@ -5,6 +5,7 @@ import Auth from '../views/Auth/index.vue'
 import Login from '../views/Auth/Login/Login.vue'
 import Register from '../views/Auth/Register/Register.vue'
 import CreatePin from '../views/Auth/CreatePin/CreatePin.vue'
+import PinSuccess from '../views/Auth/CreatePin/PinSuccess.vue'
 import ForgotPassword from '../views/Auth/ForgotPassword/ForgotPassword.vue'
 import NewPassword from '../views/Auth/ForgotPassword/NewPassword.vue'
 
@@ -33,6 +34,10 @@ const routes = [ //
       {
         path: 'create-pin',
         component: CreatePin
+      },
+      {
+        path: 'success',
+        component: PinSuccess
       },
       {
         path: 'forgot-password',
