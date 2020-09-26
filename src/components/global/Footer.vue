@@ -1,19 +1,19 @@
 <template>
-<b-container fluid>
-    <b-container>
-        <b-row>
-            <b-col lg="7">
-                <b-col class="copyright">2020 Zwallet. All right reserved.</b-col>
-            </b-col>
-            <b-col lg="5">
-            <b-row>
-                <b-col class="phone">+62 5637 8882 9901</b-col>
-                <b-col class="mail">contact@zwallet.com</b-col>
-            </b-row>
-            </b-col>
+        <b-row id="footer" class="no-gutters">
+            <b-container>
+                <b-row>
+                    <b-col lg="7">
+                        <b-col class="copyright">2020 Zwallet. All right reserved.</b-col>
+                    </b-col>
+                    <b-col lg="5">
+                    <b-row>
+                        <b-col class="phone">+62 5637 8882 9901</b-col>
+                        <b-col class="mail">contact@zwallet.com</b-col>
+                    </b-row>
+                    </b-col>
+                </b-row>
+            </b-container>
         </b-row>
-    </b-container>
-</b-container>
 </template>
 
 <script>
@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style scoped>
-.container-fluid{
+#footer{
     padding: 20px 0;
     background: #6379F4;
 }
