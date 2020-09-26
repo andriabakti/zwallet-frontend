@@ -15,6 +15,7 @@
         <div class="form-group">
           <input type="email" v-model="email" aria-describedby="emailHelp" placeholder="Enter your e-mail">
         </div>
+      </div>
       <div class="button">
         <button id="submit-btn">Confirm</button>
       </div>

@@ -18,6 +18,7 @@
         <div class="form-group">
           <input type="password" placeholder="Create new password">
         </div>
+      </div>
       <div class="button">
         <button id="submit-btn">Reset Password</button>
       </div>
