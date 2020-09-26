@@ -1,6 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Landing from '../views/Landing'
+import Auth from '../views/Auth/index.vue'
+import Login from '../views/Auth/Login/Login.vue'
+import Register from '../views/Auth/Register/Register.vue'
+import CreatePin from '../views/Auth/CreatePin/CreatePin.vue'
+import ForgotPassword from '../views/Auth/ForgotPassword/ForgotPassword.vue'
 
 Vue.use(VueRouter)
 
@@ -11,12 +16,28 @@ const routes = [ //
     component: Landing
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import('../views/About.vue')
+    path: '/auth',
+    name: 'Auth',
+    component: Auth,
+    // meta:
+    children: [
+      {
+        path: 'login',
+        component: Login
+      },
+      {
+        path: 'sign-up',
+        component: Register
+      },
+      {
+        path: 'create-pin',
+        component: CreatePin
+      },
+      {
+        path: 'forgot-password',
+        component: ForgotPassword
+      }
+    ]
   }
 ]
 

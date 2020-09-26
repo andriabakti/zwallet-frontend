@@ -7,3 +7,6 @@ Vue.component('g-image',
 Vue.component('g-button',
   () => import('./components/global/button.vue')
 )
+Vue.component('g-long-button',
+  () => import('./components/global/longButton.vue')
+)
