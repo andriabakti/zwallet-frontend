@@ -8,13 +8,14 @@ import CreatePin from '../views/Auth/CreatePin/CreatePin.vue'
 import PinSuccess from '../views/Auth/CreatePin/PinSuccess.vue'
 import ForgotPassword from '../views/Auth/ForgotPassword/ForgotPassword.vue'
 import NewPassword from '../views/Auth/ForgotPassword/NewPassword.vue'
+import Home from '../views/Home/Home.vue'
 
 Vue.use(VueRouter)
 
-const routes = [ //
+const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'Landing',
     component: Landing
   },
   {
@@ -48,6 +49,18 @@ const routes = [ //
         component: NewPassword
       }
     ]
+  },
+  {
+    path: '/home',
+    name: 'Home',
+    component: Home,
+    // meta:
+    // children: [
+    //   {
+    //     path: '',
+    //     component: 
+    //   }
+    // ]
   }
 ]
 
