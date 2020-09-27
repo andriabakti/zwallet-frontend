@@ -20,7 +20,7 @@ import ManageNumber from '../views/Main/PhoneNumber/ManageNumber.vue'
 
 Vue.use(VueRouter)
 
-const routes = [
+const routes = [ //
   {
     path: '/',
     name: 'Landing',
@@ -30,30 +30,39 @@ const routes = [
     path: '/auth',
     name: 'Auth',
     component: Auth,
+    redirect: {
+      name: 'Login'
+    },
     // meta:
-    children: [
+    children: [ //
       {
         path: 'login',
+        name: 'Login',
         component: Login
       },
       {
         path: 'sign-up',
+        name: 'Register',
         component: Register
       },
       {
         path: 'create-pin',
+        name: 'CreatePin',
         component: CreatePin
       },
       {
         path: 'success',
+        name: 'PinSuccess',
         component: PinSuccess
       },
       {
         path: 'forgot-password',
+        name: 'ForgotPassword',
         component: ForgotPassword
       },
       {
         path: 'new-password',
+        name: 'NewPassword',
         component: NewPassword
       }
     ]
@@ -63,37 +72,45 @@ const routes = [
     name: 'Main',
     component: Main,
     // meta:
-    children: [
+    children: [ //
       {
         path: 'dashboard',
+        name: 'Dashboard',
         component: Home
       },
       {
         path: 'profile',
+        name: 'Profile',
         component: Profile
       },
       {
         path: 'personal-info',
+        name: 'Personal',
         component: Personal
       },
       {
         path: 'change-password',
+        name: 'ChangePassword',
         component: ChangePassword
       },
       {
         path: 'change-pin',
+        name: 'ChangePin',
         component: ChangePin
       },
       {
         path: 'new-pin',
+        name: 'NewPin',
         component: NewPin
       },
       {
         path: 'add-phone',
+        name: 'AddNumber',
         component: AddNumber
       },
       {
         path: 'manage-number',
+        name: 'ManageNumber',
         component: ManageNumber
       }
     ]
