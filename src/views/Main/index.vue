@@ -5,6 +5,7 @@
             <b-col col lg="3">
                 <Sidebar/>
             </b-col>
+            <router-view/>
         </b-row>
         <Footer/>
     </b-container>

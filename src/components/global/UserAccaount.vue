@@ -1,18 +1,18 @@
 <template>
-            <b-row class="d-flex align-items-center">
-                <b-col lg="3">
-                    <div class="img-container mx-auto">
-                    <img src="../../assets/avatar.jpg" alt="Avatar">
-                    </div>
-                </b-col>
-                <b-col lg="7">
-                    <b-row><div class="name">User</div></b-row>
-                    <b-row><div class="phone">+62 567890</div></b-row>
-                </b-col>
-                <b-col lg="2">
-                    <b-icon icon="bell"></b-icon>
-                </b-col>
-            </b-row>
+    <b-row class="d-flex align-items-center">
+        <b-col lg="3">
+            <div class="img-container mx-auto">
+            <img src="../../assets/avatar.jpg" alt="Avatar">
+            </div>
+        </b-col>
+        <b-col lg="7">
+            <b-row><div class="name">User</div></b-row>
+            <b-row><div class="phone">+62 567890</div></b-row>
+        </b-col>
+        <b-col lg="2">
+            <b-icon icon="bell"></b-icon>
+        </b-col>
+    </b-row>
 </template>
 
 <script>

@@ -8,7 +8,15 @@ import CreatePin from '../views/Auth/CreatePin/CreatePin.vue'
 import PinSuccess from '../views/Auth/CreatePin/PinSuccess.vue'
 import ForgotPassword from '../views/Auth/ForgotPassword/ForgotPassword.vue'
 import NewPassword from '../views/Auth/ForgotPassword/NewPassword.vue'
-import Home from '../views/Home/Home.vue'
+import Main from '../views/Main/index.vue'
+import Home from '../views/Main/Home/Home.vue'
+import Profile from '../views/Main/Profile/Profile.vue'
+import Personal from '../views/Main/Personal/Personal.vue'
+import ChangePassword from '../views/Main/ChangePassword/ChangePassword.vue'
+import ChangePin from '../views/Main/ChangePin/ChangePin.vue'
+import NewPin from '../views/Main/ChangePin/NewPin.vue'
+import AddNumber from '../views/Main/PhoneNumber/AddNumber.vue'
+import ManageNumber from '../views/Main/PhoneNumber/ManageNumber.vue'
 
 Vue.use(VueRouter)
 
@@ -51,16 +59,44 @@ const routes = [
     ]
   },
   {
-    path: '/home',
-    name: 'Home',
-    component: Home,
+    path: '/main',
+    name: 'Main',
+    component: Main,
     // meta:
-    // children: [
-    //   {
-    //     path: '',
-    //     component: 
-    //   }
-    // ]
+    children: [
+      {
+        path: 'dashboard',
+        component: Home
+      },
+      {
+        path: 'profile',
+        component: Profile
+      },
+      {
+        path: 'personal-info',
+        component: Personal
+      },
+      {
+        path: 'change-password',
+        component: ChangePassword
+      },
+      {
+        path: 'change-pin',
+        component: ChangePin
+      },
+      {
+        path: 'new-pin',
+        component: NewPin
+      },
+      {
+        path: 'add-phone',
+        component: AddNumber
+      },
+      {
+        path: 'manage-number',
+        component: ManageNumber
+      }
+    ]
   }
 ]
 
