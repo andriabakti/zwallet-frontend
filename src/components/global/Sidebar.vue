@@ -75,4 +75,10 @@ a:focus {
   position: absolute;
   bottom: 20px;
 }
+.router {
+  text-decoration: none;
+}
+.router:active {
+  border-left: none;
+}
 </style>

@@ -10,6 +10,7 @@ import PinSuccess from '../views/Auth/CreatePin/PinSuccess.vue'
 import ForgotPassword from '../views/Auth/ForgotPassword/ForgotPassword.vue'
 import NewPassword from '../views/Auth/ForgotPassword/NewPassword.vue'
 import Main from '../views/Main/index.vue'
+import Transfer from '../views/Main/Transfer/Transfer.vue'
 import Home from '../views/Main/Home/Home.vue'
 import History from '../views/Main/History/History.vue'
 import Profile from '../views/Main/Profile/Profile.vue'
@@ -126,6 +127,11 @@ const routes = [ //
         path: 'history',
         name: 'History',
         component: History
+      },
+      {
+        path: 'transfer',
+        name: 'Transfer',
+        component: Transfer
       },
       {
         path: 'profile',
