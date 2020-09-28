@@ -11,6 +11,7 @@ import ForgotPassword from '../views/Auth/ForgotPassword/ForgotPassword.vue'
 import NewPassword from '../views/Auth/ForgotPassword/NewPassword.vue'
 import Main from '../views/Main/index.vue'
 import Home from '../views/Main/Home/Home.vue'
+import History from '../views/Main/History/History.vue'
 import Profile from '../views/Main/Profile/Profile.vue'
 import Personal from '../views/Main/Personal/Personal.vue'
 import ChangePassword from '../views/Main/ChangePassword/ChangePassword.vue'
@@ -120,6 +121,11 @@ const routes = [ //
         path: 'topup',
         name: 'TopUp',
         component: Home
+      },
+      {
+        path: 'history',
+        name: 'History',
+        component: History
       },
       {
         path: 'profile',
