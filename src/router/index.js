@@ -114,11 +114,6 @@ const routes = [ //
         component: Home
       },
       {
-        path: 'transfer',
-        name: 'Transfer',
-        component: Home
-      },
-      {
         path: 'topup',
         name: 'TopUp',
         component: Home
