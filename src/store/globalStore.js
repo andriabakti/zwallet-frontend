@@ -1,11 +1,14 @@
 // state
 const state = {
-  isLoading: false
+  isLoading: false,
+  statusPin: false
 }
 
 // getters
 const getters = {
-  getLoading: (state) => state.isLoading
+  getLoading: (state) => state.isLoading,
+  getStatusPin: (state) => state.statusPin
+
 }
 
 // actions
@@ -14,6 +17,11 @@ const actions = {
     commit
   }, status) {
     commit('CHANGE_IS_LOADING', status)
+  },
+  changeStatusPin({
+    commit
+  }, status) {
+    commit('CHANGE_STATUS_PIN', status)
   }
 }
 
@@ -21,6 +29,9 @@ const actions = {
 const mutations = {
   CHANGE_IS_LOADING: (state, status) => {
     state.isLoading = status
+  },
+  CHANGE_STATUS_PIN: (state, status) => {
+    state.statusPin = status
   }
 }
 

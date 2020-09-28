@@ -1,19 +1,19 @@
 <template>
   <div>
-    <b-nav vertical class="ml-auto">
-      <b-nav-item :to="{ name: 'Login' }" active class="my-2">
+    <b-nav vertical class="ml-auto font-17">
+      <b-nav-item :to="{ name: 'Login' }" active class="my-2 font-17">
         <b-icon icon="grid" class="mr-3"></b-icon> Dashboard</b-nav-item
       >
-      <b-nav-item :to="{ name: 'Transfer' }" class="my-2">
+      <b-nav-item :to="{ name: 'Transfer' }" class="my-2 font-17">
         <b-icon icon="arrow-up" class="mr-3"></b-icon> Transfer</b-nav-item
       >
-      <b-nav-item :to="{ name: 'TopUp' }" class="my-2">
+      <b-nav-item :to="{ name: 'TopUp' }" class="my-2 font-17">
         <b-icon icon="plus" class="mr-3"></b-icon> Top Up</b-nav-item
       >
-      <b-nav-item :to="{ name: 'Profile' }" class="my-2">
+      <b-nav-item :to="{ name: 'Profile' }" class="my-2 font-17">
         <b-icon icon="person" class="mr-3"></b-icon> Profile</b-nav-item
       >
-      <b-nav-item class="my-2 logout" @click="handleLogout"
+      <b-nav-item class="my-2 logout font-17" @click="handleLogout"
         ><b-icon icon="box-arrow-right" class="mr-3"></b-icon>
         Logout</b-nav-item
       >

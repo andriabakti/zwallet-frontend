@@ -5,17 +5,31 @@
         <div class="title">Transaction History</div>
         <router-link :to="{ name: 'History' }">See all</router-link>
       </div>
-      <CardTransaction />
+      <div
+        v-if="getMyHistory.length === 0"
+        class="font-weight-bold text-center font-18"
+      >
+        History is empty
+      </div>
+      <div v-if="getMyHistory.length > 0">
+        <div class="mb-4" v-for="history in getMyHistory" :key="history.id">
+          <CardTransaction :data="history" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import CardTransaction from '../../../../components/global/CardTransaction'
 export default {
   name: 'historyTransaction',
   components: {
     CardTransaction
+  },
+  computed: {
+    ...mapGetters('history', ['getMyHistory'])
   }
 }
 </script>

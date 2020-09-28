@@ -47,7 +47,12 @@
           >
             Cancel
           </button>
-          <button type="submit" class="btn btn-primary">Update</button>
+          <g-button
+            type="submit"
+            class="btn btn-primary"
+            :isLoading="getLoading"
+            >Update</g-button
+          >
         </div>
       </div>
     </form>
@@ -106,7 +111,8 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('user', ['getMyProfile'])
+    ...mapGetters('user', ['getMyProfile']),
+    ...mapGetters(['getLoading'])
   }
 }
 </script>

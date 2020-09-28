@@ -4,15 +4,28 @@
       <b-row class="p-4 d-flex justify-content-between align-items-center">
         <div>
           <div class="title">Balance</div>
-          <div class="amount my-2">Rp120.000</div>
-          <div class="userPhone">+62 813-9387-7946</div>
+          <div class="amount my-2">{{ getMyProfile.balance | currency }}</div>
+          <div class="userPhone">
+            {{
+              getMyProfile.phoneNumber
+                ? '+62 ' + getMyProfile.phoneNumber
+                : 'No tlp belum di setting'
+            }}
+          </div>
         </div>
         <div>
-          <b-button class="btn" variant="outline-primary"
-            ><b-icon icon="arrow-up" class="mr-2"></b-icon> Transfer</b-button
+          <router-link
+            :to="{ name: 'Transfer' }"
+            class="btn"
+            variant="outline-primary"
+            ><b-icon icon="arrow-up" class="mr-2"></b-icon>
+            Transfer</router-link
           >
-          <b-button class="btn" variant="outline-primary"
-            ><b-icon icon="plus" class="mr-2"></b-icon> Top Up</b-button
+          <router-link
+            :to="{ name: 'TopUp' }"
+            class="btn"
+            variant="outline-primary"
+            ><b-icon icon="plus" class="mr-2"></b-icon> Top Up</router-link
           >
         </div>
       </b-row>
@@ -21,8 +34,12 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
-  name: 'Header'
+  name: 'Header',
+  computed: {
+    ...mapGetters('user', ['getMyProfile'])
+  }
 }
 </script>
 

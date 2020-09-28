@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Landing from '../views/Landing'
 import Auth from '../views/Auth/index.vue'
 import Login from '../views/Auth/Login/Login.vue'
+import TopUp from '../views/Main/TopUp/TopUp.vue'
 import Activate from '../views/Auth/Activate'
 import Register from '../views/Auth/Register/Register.vue'
 import CreatePin from '../views/Auth/CreatePin/CreatePin.vue'
@@ -116,7 +117,7 @@ const routes = [ //
       {
         path: 'topup',
         name: 'TopUp',
-        component: Home
+        component: TopUp
       },
       {
         path: 'history',

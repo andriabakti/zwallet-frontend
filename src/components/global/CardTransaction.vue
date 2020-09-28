@@ -2,20 +2,47 @@
   <div class="d-flex align-items-center justify-content-between">
     <div class="d-flex align-items-center">
       <div class="img-container mr-3">
-        <img src="../../assets/avatar.jpg" alt="" />
+        <b-avatar
+          rounded="lg"
+          size="60px"
+          v-if="data.receiverImage"
+          :src="data.receiverImage"
+        ></b-avatar>
+        <b-avatar
+          rounded="lg"
+          size="60px"
+          v-if="!data.receiverImage"
+        ></b-avatar>
       </div>
       <div class="d-flex flex-column">
-        <div class="title">Samuel Suhi</div>
-        <div class="type">Transfer</div>
+        <div class="title">{{ data.receiverName }}</div>
+        <div class="type">
+          {{ filterStatus }}
+          <span class="text-muted" v-if="data.status === 2">
+            | {{ data.statusTopup === 0 ? 'Pending' : 'Ok' }}</span
+          >
+        </div>
       </div>
     </div>
-    <div class="amount">+Rp50.00000</div>
+    <div class="amount">{{ data.amount | currency }}</div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'CardTransaction'
+  name: 'CardTransaction',
+  props: ['data'],
+  computed: {
+    filterStatus() {
+      let status = ''
+      if (this.data.status === 1) {
+        status = 'Transfer'
+      } else if (this.data.status === 2) {
+        status = 'Top Up'
+      }
+      return status
+    }
+  }
 }
 </script>
 

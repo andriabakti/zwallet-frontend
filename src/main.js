@@ -12,6 +12,7 @@ import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.css'
 import './assets/css/style.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import VueCurrencyFilter from 'vue-currency-filter'
 import swal from './components/mixins/swal'
 import logout from './components/mixins/logout'
 import VueToast from 'vue-toast-notification'
@@ -22,6 +23,9 @@ import 'sweetalert2/dist/sweetalert2.min.css'
 
 Vue.use(VueToast, {
   position: 'top-right'
+})
+Vue.use(VueCurrencyFilter, {
+  symbol: 'Rp.'
 })
 Vue.use(VueSweetalert2)
 Vue.mixin(swal)

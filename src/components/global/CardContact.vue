@@ -1,18 +1,36 @@
 <template>
-  <div class="d-flex align-items-center px-3 mt-3 mx-1 py-3 contact">
+  <div
+    @click="$emit('select-user', user)"
+    class="d-flex align-items-center px-3 mt-3 mx-1 py-3 contact"
+  >
     <div class="img-container mr-3">
-      <img src="../../assets/avatar.jpg" alt="" />
+      <b-avatar
+        rounded="lg"
+        size="60px"
+        v-if="user.image"
+        :src="user.image"
+      ></b-avatar>
+      <b-avatar rounded="lg" v-if="!user.image" size="60px"></b-avatar>
     </div>
     <div>
-      <div class="title">Samuel Suhi</div>
-      <div class="number">+62 813-8492-9994</div>
+      <div class="title mb-1">
+        {{ user.fullName ? user.fullName : user.username }}
+      </div>
+      <div class="number">
+        {{ user.phoneNumber ? '+62 ' + user.phoneNumber : 'Belum di set' }}
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
-  name: 'CardContact'
+  name: 'CardContact',
+  props: ['user'],
+  computed: {
+    ...mapGetters(['getLoading'])
+  }
 }
 </script>
 

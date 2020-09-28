@@ -53,11 +53,13 @@ export default {
   },
   methods: {
     ...mapActions('user', ['myProfile']),
-    ...mapActions('auth', ['interceptorsRequest', 'interceptorsResponse'])
+    ...mapActions('auth', ['interceptorsRequest', 'interceptorsResponse']),
+    ...mapActions('history', ['myHistory'])
   },
   mounted() {
     this.interceptorsRequest()
     this.interceptorsResponse()
+    this.myHistory()
     this.myProfile()
       .then((response) => {
         if (!response.results.pin) {

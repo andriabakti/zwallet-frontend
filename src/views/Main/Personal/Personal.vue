@@ -54,7 +54,7 @@
 
 <script>
 import CardMainRight from '@/components/CardMainRight'
-import CardInfo from './CardInfo'
+import CardInfo from '@/components/CardInfo'
 import { mapGetters } from 'vuex'
 export default {
   name: 'Personal',

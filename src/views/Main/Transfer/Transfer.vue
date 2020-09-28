@@ -1,16 +1,30 @@
 <template>
   <div>
-    <div class="title mb-3">Search Receiver</div>
-    <b-form-input
-      class="form-text mb-4"
-      v-model="text"
-      placeholder="Search receiver here"
-    ></b-form-input>
-    <CardContact />
+    <TransferMoney
+      v-if="getDetailTransaction.email && !getDetailTransaction.amount"
+    />
+    <Confirmation v-if="getDetailTransaction.amount" />
+    <div v-if="!getDetailTransaction.email">
+      <div class="title mb-3">Search Receiver</div>
+      <b-form-input
+        class="form-text mb-4"
+        v-model="text"
+        placeholder="Search receiver here"
+      ></b-form-input>
+      <CardContact
+        @select-user="handleSelect"
+        v-for="user in getAllUser"
+        :key="user.id"
+        :user="user"
+      />
+    </div>
   </div>
 </template>
 
 <script>
+import TransferMoney from './TransferMoney'
+import Confirmation from './Confirmation'
+import { mapActions, mapGetters } from 'vuex'
 import CardContact from '../../../components/global/CardContact'
 export default {
   name: 'Transfer',
@@ -19,8 +33,26 @@ export default {
       text: ''
     }
   },
+  methods: {
+    ...mapActions('user', ['allUser', 'detailTransaction']),
+    handleSelect(val) {
+      if (!val.fullName || !val.phoneNumber) {
+        this.$toast.error('The selected user profile is incomplete')
+      } else {
+        this.detailTransaction(val)
+      }
+    }
+  },
+  mounted() {
+    this.allUser()
+  },
   components: {
-    CardContact
+    CardContact,
+    TransferMoney,
+    Confirmation
+  },
+  computed: {
+    ...mapGetters('user', ['getAllUser', 'getDetailTransaction'])
   }
 }
 </script>

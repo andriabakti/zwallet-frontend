@@ -2,17 +2,43 @@ import User from '@/apis/User'
 
 // state
 const state = {
-  user: {}
+  user: {},
+  allUser: [],
+  detailTransaction: {}
 }
 
 // getters
 const getters = {
-  getMyProfile: (state) => state.user
+  getAllUser: (state) => state.allUser,
+  getMyProfile: (state) => state.user,
+  getDetailTransaction: (state) => state.detailTransaction
 }
 
 // actions
 const actions = {
 
+  allUser({
+    commit,
+    dispatch
+  }) {
+    dispatch('changeIsLoading', true, {
+      root: true
+    })
+    return new Promise((resolve, reject) => {
+      User.all().then(response => {
+        dispatch('changeIsLoading', false, {
+          root: true
+        })
+        resolve(response.data)
+        commit('GET_ALL_USER', response.data)
+      }).catch(err => {
+        dispatch('changeIsLoading', false, {
+          root: true
+        })
+        reject(err.response)
+      })
+    })
+  },
   myProfile({
     commit,
     dispatch
@@ -121,6 +147,21 @@ const actions = {
         reject(err.response)
       })
     })
+  },
+  clearProfile({
+    commit
+  }) {
+    commit('CLEAR_MY_PROFILE')
+  },
+  cleardetailTransaction({
+    commit
+  }) {
+    commit('CLEAR_DETAIL_TRANSACTION')
+  },
+  detailTransaction({
+    commit
+  }, data) {
+    commit('DETAIL_TRANSACTION', data)
   }
 
 }
@@ -128,8 +169,20 @@ const actions = {
 // mutations
 const mutations = {
 
+  GET_ALL_USER: (state, payload) => {
+    state.allUser = payload.results
+  },
   GET_MY_PROFILE: (state, payload) => {
     state.user = payload.results
+  },
+  CLEAR_MY_PROFILE: (state) => {
+    state.user = {}
+  },
+  DETAIL_TRANSACTION: (state, data) => {
+    state.detailTransaction = data
+  },
+  CLEAR_DETAIL_TRANSACTION: (state, data) => {
+    state.detailTransaction = {}
   }
 
 }

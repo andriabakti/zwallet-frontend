@@ -1,27 +1,29 @@
 <template>
   <div>
     <div class="title mb-4">Transaction History</div>
-    <div class="filter mb-3">This Week</div>
     <div class="row">
-      <div class="col-md-12 mb-5">
-        <CardTransaction />
-      </div>
-      <div class="col-md-12 mb-5">
-        <CardTransaction />
-      </div>
-      <div class="col-md-12 mb-5">
-        <CardTransaction />
+      <div
+        class="col-md-12 mb-5"
+        v-for="history in getMyHistory"
+        :key="history.id"
+      >
+        <CardTransaction :data="history" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 import CardTransaction from '../../../components/global/CardTransaction'
 export default {
   name: 'History',
   components: {
     CardTransaction
+  },
+  computed: {
+    ...mapGetters('history', ['getMyHistory'])
   }
 }
 </script>
