@@ -72,6 +72,9 @@ const routes = [ //
     path: '/main',
     name: 'Main',
     component: Main,
+    redirect: {
+      name: 'Dashboard'
+    },
     // meta:
     children: [ //
       {

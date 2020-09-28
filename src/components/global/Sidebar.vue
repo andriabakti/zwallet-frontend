@@ -1,10 +1,10 @@
 <template>
     <div>
     <b-nav vertical class="nav bg-white shadow-sm ml-auto mt-4 mb-4">
-        <b-nav-item active class="my-2"><b-icon icon="grid" class="mr-3"></b-icon> Dashboard</b-nav-item>
-        <b-nav-item class="my-2"><b-icon icon="arrow-up" class="mr-3"></b-icon> Transfer</b-nav-item>
-        <b-nav-item class="my-2"><b-icon icon="plus" class="mr-3"></b-icon> Top Up</b-nav-item>
-        <b-nav-item class="my-2"><b-icon icon="person" class="mr-3"></b-icon> Profile</b-nav-item>
+        <b-nav-item active class="my-2" @click="toDashboard"><b-icon icon="grid" class="mr-3"></b-icon> Dashboard</b-nav-item>
+        <b-nav-item class="my-2" @click="toTransfer"><b-icon icon="arrow-up" class="mr-3"></b-icon> Transfer</b-nav-item>
+        <b-nav-item class="my-2" @click="toTopup"><b-icon icon="plus" class="mr-3"></b-icon> Top Up</b-nav-item>
+        <b-nav-item class="my-2" @click="toProfile"><b-icon icon="person" class="mr-3"></b-icon> Profile</b-nav-item>
         <b-nav-item class="my-2 logout"><b-icon icon="box-arrow-right" class="mr-3"></b-icon> Logout</b-nav-item>
     </b-nav>
     </div>
@@ -12,7 +12,21 @@
 
 <script>
 export default {
-  name: 'Sidebar'
+  name: 'Sidebar',
+  methods: {
+    toDashboard () {
+      this.$router.push('dashboard')
+    },
+    toTransfer () {
+      this.$router.push('transfer')
+    },
+    toTopupp () {
+      this.$router.push('top-up')
+    },
+    toProfile () {
+      this.$router.push('profile')
+    }
+  }
 }
 </script>
 
