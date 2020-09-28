@@ -1,19 +1,19 @@
-import User from '@/apis/User'
+import Phone from '@/apis/PhoneNumber'
 
 // state
 const state = {
-  user: {}
+  listMyPhone: []
 }
 
 // getters
 const getters = {
-  getMyProfile: (state) => state.user
+  getListMyPhone: (state) => state.listMyPhone
 }
 
 // actions
 const actions = {
 
-  myProfile({
+  allMyPhone({
     commit,
     dispatch
   }) {
@@ -21,21 +21,22 @@ const actions = {
       root: true
     })
     return new Promise((resolve, reject) => {
-      User.myProfile().then(response => {
+      Phone.myPhone().then(response => {
         dispatch('changeIsLoading', false, {
           root: true
         })
         resolve(response.data)
-        commit('GET_MY_PROFILE', response.data)
+        commit('GET_LIST_MY_PHONE', response.data)
       }).catch(err => {
         dispatch('changeIsLoading', false, {
           root: true
         })
+        commit('GET_LIST_MY_PHONE', err.response.data)
         reject(err.response)
       })
     })
   },
-  setPin({
+  addPhone({
     commit,
     dispatch
   }, data) {
@@ -43,7 +44,7 @@ const actions = {
       root: true
     })
     return new Promise((resolve, reject) => {
-      User.setPin(data).then(response => {
+      Phone.add(data).then(response => {
         dispatch('changeIsLoading', false, {
           root: true
         })
@@ -56,15 +57,15 @@ const actions = {
       })
     })
   },
-  changePassword({
+  deletePhone({
     commit,
     dispatch
-  }, data) {
+  }, id) {
     dispatch('changeIsLoading', true, {
       root: true
     })
     return new Promise((resolve, reject) => {
-      User.changePassword(data).then(response => {
+      Phone.delete(id).then(response => {
         dispatch('changeIsLoading', false, {
           root: true
         })
@@ -77,39 +78,15 @@ const actions = {
       })
     })
   },
-  updateUser({
+  selectPrimaryPhone({
     commit,
     dispatch
-  }, {
-    id,
-    data
-  }) {
+  }, id) {
     dispatch('changeIsLoading', true, {
       root: true
     })
     return new Promise((resolve, reject) => {
-      User.updateUser(id, data).then(response => {
-        dispatch('changeIsLoading', false, {
-          root: true
-        })
-        resolve(response.data)
-      }).catch(err => {
-        dispatch('changeIsLoading', false, {
-          root: true
-        })
-        reject(err.response)
-      })
-    })
-  },
-  changePin({
-    commit,
-    dispatch
-  }, data) {
-    dispatch('changeIsLoading', true, {
-      root: true
-    })
-    return new Promise((resolve, reject) => {
-      User.changePin(data).then(response => {
+      Phone.selectPrimary(id).then(response => {
         dispatch('changeIsLoading', false, {
           root: true
         })
@@ -128,8 +105,12 @@ const actions = {
 // mutations
 const mutations = {
 
-  GET_MY_PROFILE: (state, payload) => {
-    state.user = payload.results
+  GET_LIST_MY_PHONE: (state, payload) => {
+    if (payload.message.sqlMessage === 'Data Not Found') {
+      state.listMyPhone = []
+    } else {
+      state.listMyPhone = payload.results
+    }
   }
 
 }

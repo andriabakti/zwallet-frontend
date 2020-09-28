@@ -22,12 +22,18 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: 'Sidebar',
   methods: {
+    ...mapActions('auth', ['interceptorsRequest', 'interceptorsResponse']),
     handleLogout() {
       this.logoutMixin()
     }
+  },
+  mounted() {
+    this.interceptorsRequest()
+    this.interceptorsResponse()
   }
 }
 </script>

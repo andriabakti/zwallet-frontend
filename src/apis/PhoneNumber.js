@@ -15,8 +15,8 @@ export default {
   add(data) {
     return Api.post(`${BASE_URL}`, data)
   },
-  selectPrimary(id, data) {
-    return Api.patch(`${BASE_URL}/${id}`, data)
+  selectPrimary(id) {
+    return Api.patch(`${BASE_URL}/select/${id}`)
   },
   delete(id) {
     return Api.delete(`${BASE_URL}/${id}`)
