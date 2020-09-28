@@ -2,7 +2,7 @@
 <b-row class="d-flex align-items-center">
     <b-col lg="2">
         <div class="img-container">
-            <img src="../../../../assets/avatar.jpg" alt="">
+            <img src="../../assets/avatar.jpg" alt="">
         </div>
     </b-col>
     <b-col lg="6">

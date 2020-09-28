@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import CardTransaction from './CardTransaction'
+import CardTransaction from '../../../../components/global/CardTransaction'
 export default {
   name: 'historyTransaction',
   components: {
