@@ -30,7 +30,5 @@ export default {
     padding: 0;
     background-color: #FAFCFF;
 }
-.col{
-    height: 100vh;
-}
+
 </style>
