@@ -9,6 +9,7 @@ import PinSuccess from '../views/Auth/CreatePin/PinSuccess.vue'
 import ForgotPassword from '../views/Auth/ForgotPassword/ForgotPassword.vue'
 import NewPassword from '../views/Auth/ForgotPassword/NewPassword.vue'
 import Main from '../views/Main/index.vue'
+import Transfer from '../views/Main/Transfer/Transfer.vue'
 import Home from '../views/Main/Home/Home.vue'
 import Profile from '../views/Main/Profile/Profile.vue'
 import Personal from '../views/Main/Personal/Personal.vue'
@@ -77,6 +78,11 @@ const routes = [ //
         path: 'dashboard',
         name: 'Dashboard',
         component: Home
+      },
+      {
+        path: 'transfer',
+        name: 'Transfer',
+        component: Transfer
       },
       {
         path: 'profile',
