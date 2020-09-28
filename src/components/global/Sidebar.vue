@@ -1,11 +1,11 @@
 <template>
     <div>
     <b-nav vertical class="nav bg-white shadow-sm ml-auto mt-4">
-        <b-nav-item active class="my-2"><b-icon icon="grid" class="mr-3"></b-icon> Dashboard</b-nav-item>
-        <b-nav-item class="my-2"><b-icon icon="arrow-up" class="mr-3"></b-icon> Transfer</b-nav-item>
-        <b-nav-item class="my-2"><b-icon icon="plus" class="mr-3"></b-icon> Top Up</b-nav-item>
-        <b-nav-item class="my-2"><b-icon icon="person" class="mr-3"></b-icon> Profile</b-nav-item>
-        <b-nav-item class="my-2 logout"><b-icon icon="box-arrow-right" class="mr-3"></b-icon> Logout</b-nav-item>
+        <router-link class="router" to="dashboard"><b-nav-item active class="my-2"><b-icon icon="grid" class="mr-3"></b-icon> Dashboard</b-nav-item></router-link>
+        <router-link class="router" to="transfer"><b-nav-item class="my-2"><b-icon icon="arrow-up" class="mr-3"></b-icon> Transfer</b-nav-item></router-link>
+        <router-link class="router" to="dashboard"><b-nav-item class="my-2"><b-icon icon="plus" class="mr-3"></b-icon> Top Up</b-nav-item></router-link>
+        <router-link class="router" to="dashboard"><b-nav-item class="my-2"><b-icon icon="person" class="mr-3"></b-icon> Profile</b-nav-item></router-link>
+        <router-link class="router" to="dashboard"><b-nav-item class="my-2 logout"><b-icon icon="box-arrow-right" class="mr-3"></b-icon> Logout</b-nav-item></router-link>
     </b-nav>
     </div>
 </template>
@@ -45,5 +45,11 @@ a:focus {
 .logout{
     position: absolute;
     bottom: 20px;
+}
+.router{
+    text-decoration: none;
+}
+.router:active{
+    border-left: none;
 }
 </style>

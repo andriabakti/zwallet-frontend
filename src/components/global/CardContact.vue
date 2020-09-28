@@ -1,5 +1,5 @@
 <template>
-<b-row class="d-flex align-items-center mt-3 mx-1 p-2 contact">
+<b-row class="d-flex align-items-center mt-3 mx-1 py-3 contact">
     <b-col lg="1">
         <div class="img-container">
             <img src="../../assets/avatar.jpg" alt="">
@@ -29,6 +29,7 @@ export default {
     background: #FFFFFF;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
     border-radius: 10px;
+    cursor: pointer;
 }
 .img-container{
     width: 60px;
