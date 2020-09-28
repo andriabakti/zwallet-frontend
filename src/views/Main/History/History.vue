@@ -8,15 +8,25 @@
             <div class="filter">This Week</div>
         </b-col>
         <b-col lg="12 mt-1">
-            <div class="filter">This Week</div>
+            <CardTransaction/>
+        </b-col>
+        <b-col lg="12 mt-4">
+            <div class="filter">This Month</div>
+        </b-col>
+        <b-col lg="12 mt-1">
+            <CardTransaction/>
         </b-col>
     </b-row>
 </b-col>
 </template>
 
 <script>
+import CardTransaction from '../../../components/global/CardTransaction'
 export default {
-  name: 'History'
+  name: 'History',
+  components: {
+    CardTransaction
+  }
 }
 </script>
 
