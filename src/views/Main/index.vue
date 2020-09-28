@@ -28,5 +28,6 @@ export default {
 <style scoped>
 .container-fluid{
     padding: 0;
+    background-color: #FAFCFF;
 }
 </style>

@@ -1,16 +1,16 @@
 <template>
 <b-row class="d-flex align-items-center">
-    <b-col lg="2">
+    <b-col lg="1">
         <div class="img-container">
             <img src="../../assets/avatar.jpg" alt="">
         </div>
     </b-col>
-    <b-col lg="6">
+    <b-col lg="7">
         <b-row class="no-gutters">
-            <b-col lg="12 ml-3">
+            <b-col lg="12">
                 <div class="title">Samuel Suhi</div>
             </b-col>
-            <b-col lg="12 ml-3 my-2">
+            <b-col lg="12 my-2">
                 <div class="type">Transfer</div>
             </b-col>
         </b-row>
