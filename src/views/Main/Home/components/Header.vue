@@ -6,8 +6,8 @@
             <div class="userPhone">+62 813-9387-7946</div>
         </b-col>
         <b-col lg="3">
-            <b-button class="btn" variant="outline-primary"><b-icon icon="arrow-up" class="mr-3"></b-icon> Transfer</b-button>
-            <b-button class="btn" variant="outline-primary"><b-icon icon="plus" class="mr-3"></b-icon> Top Up</b-button>
+            <b-button class="btn" variant="outline-primary"><b-icon icon="arrow-up" class="mr-2"></b-icon> Transfer</b-button>
+            <b-button class="btn" variant="outline-primary"><b-icon icon="plus" class="mr-2"></b-icon> Top Up</b-button>
         </b-col>
     </b-row>
 </template>
@@ -26,7 +26,7 @@ export default {
 .btn{
     width: 90%;
     display: block;
-    margin: 10px;
+    margin: 15px;
     padding: 10px;
     background: rgba(255, 255, 255, 0.2);
     border: 1px solid #FFFFFF;

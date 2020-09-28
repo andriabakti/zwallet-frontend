@@ -19,7 +19,7 @@ export default {
 <style scoped>
 .nav{
     width: 75%;
-    height: 100vh;
+    height: 110vh;
     padding: 25px 0;
     position: relative;
     background: #FFFFFF;
