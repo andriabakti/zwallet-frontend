@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-nav vertical class="ml-auto px-3">
+    <b-nav vertical class="ml-auto">
       <b-nav-item :to="{ name: 'Login' }" active class="my-2">
         <b-icon icon="grid" class="mr-3"></b-icon> Dashboard</b-nav-item
       >

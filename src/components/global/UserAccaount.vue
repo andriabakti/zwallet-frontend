@@ -19,7 +19,12 @@
       </router-link>
 
       <div class="name" v-if="getMyProfile.fullName">
-        {{ getMyProfile.fullName }}
+        <router-link
+          class="d-block text-dark text-decoration-none"
+          :to="{ name: 'Personal' }"
+        >
+          {{ getMyProfile.fullName }}
+        </router-link>
       </div>
       <div class="phone" v-if="getMyProfile.phoneNumber">
         {{ getMyProfile.phoneNumber }}

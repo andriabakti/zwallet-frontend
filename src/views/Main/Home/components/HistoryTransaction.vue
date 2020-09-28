@@ -1,9 +1,9 @@
 <template>
-  <div class="card history border-0">
+  <div class="card history px-2 py-3 border-0">
     <div class="card-body">
       <div class="d-flex justify-content-between mb-4">
         <div class="title">Transaction History</div>
-        <router-link to="/foo">See all</router-link>
+        <router-link :to="{ name: 'History' }">See all</router-link>
       </div>
       <CardTransaction />
     </div>

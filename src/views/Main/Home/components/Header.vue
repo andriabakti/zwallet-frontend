@@ -1,20 +1,20 @@
 <template>
   <div class="card header border-0">
     <div class="card-body">
-      <b-row class="p-4 d-flex align-items-center">
-        <b-col lg="9">
+      <b-row class="p-4 d-flex justify-content-between align-items-center">
+        <div>
           <div class="title">Balance</div>
           <div class="amount my-2">Rp120.000</div>
           <div class="userPhone">+62 813-9387-7946</div>
-        </b-col>
-        <b-col lg="3">
+        </div>
+        <div>
           <b-button class="btn" variant="outline-primary"
             ><b-icon icon="arrow-up" class="mr-2"></b-icon> Transfer</b-button
           >
           <b-button class="btn" variant="outline-primary"
             ><b-icon icon="plus" class="mr-2"></b-icon> Top Up</b-button
           >
-        </b-col>
+        </div>
       </b-row>
     </div>
   </div>

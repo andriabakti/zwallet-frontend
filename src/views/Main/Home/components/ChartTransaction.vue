@@ -1,5 +1,5 @@
 <template>
-  <div class="card chart border-0">
+  <div class="card chart px-2 py-3 border-0">
     <div class="card-body">
       <b-row>
         <b-col>
