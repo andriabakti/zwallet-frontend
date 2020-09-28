@@ -4,7 +4,7 @@
       <Navbar />
       <div class="container">
         <b-row class="text-left my-5">
-          <div class="col-lg-3 col-md-4 col-sm-12">
+          <div class="col-lg-3 col-md-4 col-sm-12 mb-3">
             <div class="card shadow-cus border-0">
               <div class="card-body">
                 <Sidebar />
@@ -12,8 +12,18 @@
             </div>
           </div>
           <div class="col-lg-9 col-md-8 col-sm-12">
-            <div class="card shadow-cus border-0">
-              <div class="card-body py-5">
+            <div
+              :class="[
+                getCurrentRoute !== 'Dashboard'
+                  ? 'card shadow-cus border-0'
+                  : ''
+              ]"
+            >
+              <div
+                :class="[
+                  getCurrentRoute !== 'Dashboard' ? 'card-body py-5' : ''
+                ]"
+              >
                 <router-view />
               </div>
             </div>
@@ -60,7 +70,10 @@ export default {
   },
   computed: {
     ...mapGetters(['getLoading']),
-    ...mapGetters('user', ['getMyProfile'])
+    ...mapGetters('user', ['getMyProfile']),
+    getCurrentRoute() {
+      return this.$route.name
+    }
   }
 }
 </script>

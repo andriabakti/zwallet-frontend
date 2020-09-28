@@ -1,8 +1,10 @@
 <template>
-  <b-col lg="9">
-    <Header/>
-    <Chart/>
-  </b-col>
+  <div>
+    <Header />
+    <div class="mt-4">
+      <Chart />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -18,5 +20,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
