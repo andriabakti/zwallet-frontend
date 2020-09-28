@@ -29,7 +29,4 @@ export default {
 .container-fluid{
     padding: 0;
 }
-.col{
-    height: 100vh;
-}
 </style>
