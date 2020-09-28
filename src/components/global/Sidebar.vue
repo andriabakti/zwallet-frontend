@@ -1,6 +1,6 @@
 <template>
     <div>
-    <b-nav vertical class="nav bg-white shadow-sm ml-auto mt-4">
+    <b-nav vertical class="nav bg-white shadow-sm ml-auto mt-4 mb-4">
         <b-nav-item active class="my-2"><b-icon icon="grid" class="mr-3"></b-icon> Dashboard</b-nav-item>
         <b-nav-item class="my-2"><b-icon icon="arrow-up" class="mr-3"></b-icon> Transfer</b-nav-item>
         <b-nav-item class="my-2"><b-icon icon="plus" class="mr-3"></b-icon> Top Up</b-nav-item>

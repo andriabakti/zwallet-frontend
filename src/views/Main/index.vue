@@ -28,8 +28,6 @@ export default {
 <style scoped>
 .container-fluid{
     padding: 0;
-}
-.col{
-    height: 100vh;
+    background-color: #FAFCFF;
 }
 </style>
