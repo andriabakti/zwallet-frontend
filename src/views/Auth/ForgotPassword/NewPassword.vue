@@ -62,13 +62,6 @@ export default {
   background: #FAFCFF;
   margin-top: 40px;
 }
-#forgot {
-  font-weight: 600;
-  font-size: 14px;
-  text-align: right;
-  color: rgba(58, 61, 66, 0.8);
-  cursor: pointer;
-}
 
 /* Button */
 .button {
