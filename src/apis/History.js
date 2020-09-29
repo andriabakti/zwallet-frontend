@@ -9,11 +9,17 @@ export default {
   detail(id) {
     return Api.get(`${BASE_URL}/${id}`)
   },
+  income() {
+    return Api.get(`${BASE_URL}/my-income`)
+  },
+  outcome() {
+    return Api.get(`${BASE_URL}/my-outcome`)
+  },
   allTopUp() {
     return Api.get(`${BASE_URL}/get-topup`)
   },
-  myHistory() {
-    return Api.get(`${BASE_URL}/my-history`)
+  myHistory(page, sort) {
+    return Api.get(`${BASE_URL}/my-history?page=${page}${sort ? '&order=' + sort : ''}`)
   },
   topup(data) {
     return Api.post(`${BASE_URL}/topup`, data)

@@ -113,7 +113,8 @@ export default {
         .then((response) => {
           this.$toast.success('Top up request sent, please wait a few minutes')
           this.$bvModal.hide('modal-topup')
-          this.myHistory()
+          this.myHistory({ page: 1 })
+          this.$router.push({ name: 'Dashboard' })
         })
         .catch((err) => {
           this.$toast.error(err.data.message)

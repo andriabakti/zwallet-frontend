@@ -59,7 +59,7 @@ export default {
   mounted() {
     this.interceptorsRequest()
     this.interceptorsResponse()
-    this.myHistory()
+    this.myHistory({ page: 1 })
     this.myProfile()
       .then((response) => {
         if (!response.results.pin) {

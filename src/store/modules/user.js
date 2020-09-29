@@ -20,12 +20,15 @@ const actions = {
   allUser({
     commit,
     dispatch
+  }, {
+    page,
+    search
   }) {
     dispatch('changeIsLoading', true, {
       root: true
     })
     return new Promise((resolve, reject) => {
-      User.all().then(response => {
+      User.all(page || 1, search || null).then(response => {
         dispatch('changeIsLoading', false, {
           root: true
         })

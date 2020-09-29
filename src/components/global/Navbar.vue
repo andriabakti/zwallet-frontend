@@ -35,11 +35,22 @@
                 Transfer</router-link
               >
               <router-link
+                v-if="getMyProfile.roleId === 2"
                 :to="{ name: 'TopUp' }"
                 class="my-2 font-17 text-dark text-decoration-none"
               >
                 <b-icon icon="plus" class="mr-3"></b-icon> Top Up</router-link
               >
+
+              <router-link
+                v-if="getMyProfile.roleId === 1"
+                :to="{ name: 'DataTopUp' }"
+                class="my-2 font-17 text-dark text-decoration-none"
+              >
+                <b-icon icon="shift" class="mr-3"></b-icon> Data Top
+                Up</router-link
+              >
+
               <router-link
                 :to="{ name: 'Profile' }"
                 class="my-2 font-17 text-dark text-decoration-none"
@@ -63,6 +74,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import UserAccount from '../global/UserAccaount'
 export default {
   name: 'Navbar',
@@ -73,6 +85,9 @@ export default {
     handleLogout() {
       this.logoutMixin()
     }
+  },
+  computed: {
+    ...mapGetters('user', ['getMyProfile'])
   }
 }
 </script>

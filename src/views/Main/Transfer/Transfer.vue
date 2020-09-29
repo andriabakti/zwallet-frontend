@@ -5,18 +5,46 @@
     />
     <Confirmation v-if="getDetailTransaction.amount" />
     <div v-if="!getDetailTransaction.email">
-      <div class="title mb-3">Search Receiver</div>
-      <b-form-input
-        class="form-text mb-4"
-        v-model="text"
-        placeholder="Search receiver here"
-      ></b-form-input>
-      <CardContact
-        @select-user="handleSelect"
-        v-for="user in getAllUser"
-        :key="user.id"
-        :user="user"
-      />
+      <div class="title mb-3">
+        Search Receiver
+        <g-button
+          :isLoading="getLoading"
+          @cus-click="handleRefresh"
+          class="btn btn-primary btn-sm shadow"
+        >
+          <b-icon icon="arrow-clockwise" />
+        </g-button>
+      </div>
+      <div class="position-relative mb-4">
+        <b-form-input
+          class="form-text"
+          @keypress.enter="handleSearch"
+          v-model="text"
+          style="padding-right: 45px"
+          placeholder="Search receiver here"
+        ></b-form-input>
+        <span @click="handleSearch" class="search-ic"
+          ><b-icon icon="search"
+        /></span>
+      </div>
+      <div class="card-transfer">
+        <CardContact
+          @select-user="handleSelect"
+          v-for="user in users"
+          :key="user.id"
+          :user="user"
+        />
+        <h5
+          v-if="users.length === 0"
+          class="text-center text-danger font-weight-bold"
+        >
+          Data Empty
+        </h5>
+      </div>
+      <infinite-loading
+        class="text-center"
+        @infinite="infiniteHandler"
+      ></infinite-loading>
     </div>
   </div>
 </template>
@@ -30,21 +58,74 @@ export default {
   name: 'Transfer',
   data() {
     return {
-      text: ''
+      text: '',
+      page: 1,
+      users: []
     }
   },
   methods: {
-    ...mapActions('user', ['allUser', 'detailTransaction']),
+    ...mapActions('user', [
+      'allUser',
+      'detailTransaction',
+      'cleardetailTransaction'
+    ]),
+    handleSearch() {
+      this.allUser({ page: 1, search: this.text })
+        .then((response) => {
+          this.users = response.results
+          this.text = ''
+        })
+        // eslint-disable-next-line handle-callback-err
+        .catch((err) => {
+          console.log(err)
+          this.users = []
+        })
+      this.text = ''
+    },
+    handleRefresh() {
+      this.allUser({ page: 1 })
+        .then((response) => {
+          this.users = response.results
+        })
+        // eslint-disable-next-line handle-callback-err
+        .catch((err) => {
+          console.log(err)
+          this.users = []
+        })
+      this.text = ''
+    },
     handleSelect(val) {
       if (!val.fullName || !val.phoneNumber) {
         this.$toast.error('The selected user profile is incomplete')
       } else {
         this.detailTransaction(val)
       }
+    },
+    infiniteHandler($state) {
+      const data = {
+        page: this.page
+      }
+      if (this.text) {
+        data.search = this.text
+      }
+      this.allUser(data)
+        .then((response) => {
+          if (response.results.length) {
+            this.page += 1
+            this.users.push(...response.results)
+            $state.loaded()
+          } else {
+            $state.complete()
+          }
+        })
+        // eslint-disable-next-line handle-callback-err
+        .catch((err) => {
+          $state.complete()
+        })
     }
   },
   mounted() {
-    this.allUser()
+    this.cleardetailTransaction()
   },
   components: {
     CardContact,
@@ -52,12 +133,23 @@ export default {
     Confirmation
   },
   computed: {
-    ...mapGetters('user', ['getAllUser', 'getDetailTransaction'])
+    ...mapGetters('user', ['getAllUser', 'getDetailTransaction']),
+    ...mapGetters(['getLoading'])
   }
 }
 </script>
 
 <style scoped>
+.card-transfer {
+  max-height: 100vh;
+  overflow: auto;
+}
+.search-ic {
+  position: absolute;
+  right: 15px;
+  top: 8px;
+  cursor: pointer;
+}
 .transfer {
   background: #ffffff;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);

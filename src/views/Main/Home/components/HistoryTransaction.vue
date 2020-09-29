@@ -12,7 +12,11 @@
         History is empty
       </div>
       <div v-if="getMyHistory.length > 0">
-        <div class="mb-4" v-for="history in getMyHistory" :key="history.id">
+        <div
+          class="mb-4"
+          v-for="history in getMyHistory.slice(0, 5)"
+          :key="history.id"
+        >
           <CardTransaction :data="history" />
         </div>
       </div>

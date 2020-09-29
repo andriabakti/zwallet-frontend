@@ -5,6 +5,11 @@
       to make changes on your information, contact our support.</template
     >
     <template #body>
+      <router-link
+        class="btn btn-primary shadow btn-sm mr-2 mb-3"
+        :to="{ name: 'Profile' }"
+        >Back</router-link
+      >
       <button
         type="button"
         v-b-modal.modal-user

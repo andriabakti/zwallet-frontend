@@ -1,6 +1,9 @@
 <template>
   <div>
-    <CardMainRight title="Transfer To">
+    <CardMainRight
+      title="Transfer To"
+      v-if="getDetailTransaction.amount && !getDetailTransaction.success"
+    >
       <template #description>
         <CardContact :user="getDetailTransaction" />
         <button
@@ -23,13 +26,55 @@
               (getMyProfile.balance - getDetailTransaction.amount) | currency
             "
           />
-          <CardInfo label="Date & time" :main="new Date()" />
+          <CardInfo
+            label="Date & time"
+            :main="new Date() | dateFormat('MMM DD, YYYY - HH.mm')"
+          />
           <CardInfo label="Notes" :main="getDetailTransaction.notes" />
         </div>
         <div class="float-right">
           <button v-b-modal.modal-transfer class="btn btn-primary">
             Continue
           </button>
+        </div>
+      </template>
+    </CardMainRight>
+    <CardMainRight
+      v-if="getDetailTransaction.amount && getDetailTransaction.success"
+    >
+      <template #body>
+        <div class="row mb-4" id="print">
+          <div class="col-md-12">
+            <div class="text-center">
+              <img :src="require(`@/assets/images/success.png`)" />
+              <p class="font-weight-bold mt-3 font-20">Transaction Success</p>
+            </div>
+          </div>
+          <CardInfo
+            label="Amount"
+            :main="getDetailTransaction.amount | currency"
+          />
+          <CardInfo
+            label="Balance Left"
+            :main="
+              (getMyProfile.balance - getDetailTransaction.amount) | currency
+            "
+          />
+          <CardInfo
+            label="Date & time"
+            :main="new Date() | dateFormat('MMM DD, YYYY - HH.mm')"
+          />
+          <CardInfo label="Notes" :main="getDetailTransaction.notes" />
+          <div class="col-md-12">
+            <p class="font-weight-bold font-18 text-muted mt-4">Transfer To</p>
+            <CardContact :user="getDetailTransaction" />
+          </div>
+        </div>
+        <div class="float-right">
+          <button class="btn btn-info mr-3" @click="print">Print</button>
+          <router-link :to="{ name: 'Dashboard' }" class="btn btn-primary">
+            Back To Home
+          </router-link>
         </div>
       </template>
     </CardMainRight>
@@ -59,6 +104,9 @@ export default {
       } else {
         this.detailTransaction(val)
       }
+    },
+    print() {
+      this.$htmlToPaper('print')
     },
     handleContinue() {
       if (!this.amount) {

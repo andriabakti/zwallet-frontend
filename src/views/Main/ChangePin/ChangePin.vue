@@ -6,6 +6,11 @@
         steps.
       </template>
       <template #body>
+        <router-link
+          class="btn btn-primary shadow btn-sm"
+          :to="{ name: 'Profile' }"
+          >Back</router-link
+        >
         <div class="row mt-5">
           <div class="col-md-8 mx-auto">
             <form @submit.prevent="checkPin" class="text-center">
@@ -17,7 +22,7 @@
                 :disabled="!checkFilled"
                 :class="[checkFilled ? 'btn-primary' : 'btn-secondary']"
               >
-                Change Password
+                Change PIN
               </button>
             </form>
           </div>
@@ -40,7 +45,7 @@
                 :disabled="!checkFilled"
                 :class="[checkFilled ? 'btn-primary' : 'btn-secondary']"
               >
-                Change Password
+                Change PIN
               </button>
             </form>
           </div>

@@ -5,23 +5,37 @@
         <b-avatar
           rounded="lg"
           size="60px"
-          v-if="data.receiverImage"
-          :src="data.receiverImage"
-        ></b-avatar>
-        <b-avatar
-          rounded="lg"
-          size="60px"
-          v-if="!data.receiverImage"
+          :src="
+            getMyProfile.id === data.receiverId
+              ? data.senderImage
+              : data.receiverImage
+          "
         ></b-avatar>
       </div>
       <div class="d-flex flex-column">
-        <div class="title">{{ data.receiverName }}</div>
+        <div class="title">
+          {{
+            getMyProfile.id === data.receiverId
+              ? data.senderName
+              : data.receiverName
+          }}
+        </div>
         <div class="type">
           {{ filterStatus }}
           <span class="text-muted" v-if="data.status === 2">
-            | {{ data.statusTopup === 0 ? 'Pending' : 'Ok' }}</span
+            |
+            {{
+              data.statusTopup === 0
+                ? 'Pending'
+                : data.statusTopup === 1
+                ? 'Success'
+                : 'Rejected'
+            }}</span
           >
         </div>
+        <span class="font-12">{{
+          new Date(data.date) | dateFormat('MMM DD, YYYY - HH.mm')
+        }}</span>
       </div>
     </div>
     <div
@@ -37,7 +51,13 @@
     <div
       v-if="data.status === 2"
       class="font-weight-bold"
-      :class="[data.statusTopup === 1 ? 'text-success' : 'text-info']"
+      :class="[
+        data.statusTopup === 0
+          ? 'text-info'
+          : data.statusTopup === 1
+          ? 'text-success'
+          : 'text-dark line-throught'
+      ]"
     >
       {{ data.amount | currency }}
     </div>
@@ -75,6 +95,9 @@ export default {
   object-fit: cover;
   background-blend-mode: normal;
   border-radius: 10px;
+}
+.line-throught {
+  text-decoration: line-through;
 }
 .title {
   font-style: normal;

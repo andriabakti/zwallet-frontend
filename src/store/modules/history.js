@@ -40,6 +40,48 @@ const actions = {
       })
     })
   },
+  myIncome({
+    commit,
+    dispatch
+  }) {
+    dispatch('changeIsLoading', true, {
+      root: true
+    })
+    return new Promise((resolve, reject) => {
+      History.income().then(response => {
+        dispatch('changeIsLoading', false, {
+          root: true
+        })
+        resolve(response.data)
+      }).catch(err => {
+        dispatch('changeIsLoading', false, {
+          root: true
+        })
+        reject(err.response)
+      })
+    })
+  },
+  myOutcome({
+    commit,
+    dispatch
+  }) {
+    dispatch('changeIsLoading', true, {
+      root: true
+    })
+    return new Promise((resolve, reject) => {
+      History.outcome().then(response => {
+        dispatch('changeIsLoading', false, {
+          root: true
+        })
+        resolve(response.data)
+      }).catch(err => {
+        dispatch('changeIsLoading', false, {
+          root: true
+        })
+        reject(err.response)
+      })
+    })
+  },
   allTopUp({
     commit,
     dispatch
@@ -66,12 +108,15 @@ const actions = {
   myHistory({
     commit,
     dispatch
+  }, {
+    page,
+    sort
   }) {
     dispatch('changeIsLoading', true, {
       root: true
     })
     return new Promise((resolve, reject) => {
-      History.myHistory().then(response => {
+      History.myHistory(page || 1, sort || null).then(response => {
         dispatch('changeIsLoading', false, {
           root: true
         })
@@ -82,6 +127,30 @@ const actions = {
           root: true
         })
         commit('GET_MY_HISTORY', err.response.data)
+        reject(err.response)
+      })
+    })
+  },
+  historyNotif({
+    commit,
+    dispatch
+  }, {
+    page,
+    sort
+  }) {
+    dispatch('changeIsLoading', true, {
+      root: true
+    })
+    return new Promise((resolve, reject) => {
+      History.myHistory(page || 1, sort || null).then(response => {
+        dispatch('changeIsLoading', false, {
+          root: true
+        })
+        resolve(response.data)
+      }).catch(err => {
+        dispatch('changeIsLoading', false, {
+          root: true
+        })
         reject(err.response)
       })
     })

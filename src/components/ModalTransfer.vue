@@ -37,6 +37,7 @@ export default {
     ...mapActions('user', [
       'myProfile',
       'updateUser',
+      'detailTransaction',
       'cleardetailTransaction'
     ]),
     ...mapActions('history', ['transfer', 'myHistory']),
@@ -55,9 +56,12 @@ export default {
           .then((response) => {
             this.$toast.success('Transfer successful')
             this.myProfile()
-            this.myHistory()
-            this.cleardetailTransaction()
-            this.$router.push({ name: 'Dashboard' })
+            this.myHistory({ page: 1 })
+            this.detailTransaction({
+              ...this.getDetailTransaction,
+              success: true
+            })
+            this.$bvModal.hide('modal-transfer')
           })
           .catch((err) => {
             this.$toast.error(err.data.message)

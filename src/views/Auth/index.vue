@@ -7,7 +7,12 @@
             <div
               class="d-flex justify-content-center align-items-center flex-column"
             >
-              <p id="title" class="pt-4">Zwallet</p>
+              <router-link
+                :to="{ name: 'Landing' }"
+                id="title"
+                class="pt-4 text-decoration-none d-block mb-3"
+                >Zwallet</router-link
+              >
               <img
                 src="../../assets/images/authMain/phone.svg"
                 class="img-fluid"

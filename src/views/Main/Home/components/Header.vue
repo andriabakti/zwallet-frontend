@@ -22,6 +22,7 @@
             Transfer</router-link
           >
           <router-link
+            v-if="getMyProfile.roleId === 2"
             :to="{ name: 'TopUp' }"
             class="btn"
             variant="outline-primary"

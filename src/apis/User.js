@@ -3,8 +3,8 @@ import Api from './Api'
 const BASE_URL = 'users'
 
 export default {
-  all() {
-    return Api.get(`${BASE_URL}`)
+  all(page, search) {
+    return Api.get(`${BASE_URL}?page=${page}${search ? '&search=' + search : ''}`)
   },
   byId(id) {
     return Api.get(`${BASE_URL}/${id}`)
