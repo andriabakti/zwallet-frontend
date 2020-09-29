@@ -21,9 +21,9 @@ export default {
   transfer(data) {
     return Api.post(`${BASE_URL}/transfer`, data)
   },
-  changeStatus(id, status) {
-    return Api.patch(`${BASE_URL}/status/${id}`, {
-      status
+  changeStatus(id, data) {
+    return Api.patch(`${BASE_URL}/status-topup/${id}`, {
+      status: data
     })
   }
 }

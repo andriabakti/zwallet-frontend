@@ -4,7 +4,7 @@
       <Navbar />
       <div class="container">
         <b-row class="text-left my-5">
-          <div class="col-lg-3 col-md-4 col-sm-12 mb-3">
+          <div class="col-lg-3 col-md-4 col-sm-12 mb-3 mobile-sidebar">
             <div class="card shadow-cus border-0">
               <div class="card-body">
                 <Sidebar />
@@ -89,5 +89,10 @@ export default {
 }
 .col {
   height: 100vh;
+}
+@media screen and (max-width: 767px) {
+  .mobile-sidebar {
+    display: none;
+  }
 }
 </style>

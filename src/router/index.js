@@ -21,6 +21,7 @@ import ChangePin from '../views/Main/ChangePin/ChangePin.vue'
 import NewPin from '../views/Main/ChangePin/NewPin.vue'
 import AddNumber from '../views/Main/PhoneNumber/AddNumber.vue'
 import ManageNumber from '../views/Main/PhoneNumber/ManageNumber.vue'
+import DataTopUp from '../views/Main/DataTopUp/DataTopUp.vue'
 
 import store from '../store'
 
@@ -117,7 +118,10 @@ const routes = [ //
       {
         path: 'topup',
         name: 'TopUp',
-        component: TopUp
+        component: TopUp,
+        meta: {
+          userOnly: true
+        }
       },
       {
         path: 'history',
@@ -133,6 +137,14 @@ const routes = [ //
         path: 'profile',
         name: 'Profile',
         component: Profile
+      },
+      {
+        path: 'data-topup',
+        name: 'DataTopUp',
+        component: DataTopUp,
+        meta: {
+          adminOnly: true
+        }
       },
       {
         path: 'personal-info',
@@ -195,11 +207,6 @@ router.beforeEach((to, from, next) => {
       next({
         name: 'Dashboard'
       })
-      // if (store.state['user/user'].pin) {
-
-      // } else {
-      //   next()
-      // }
     } else {
       next()
     }
@@ -207,5 +214,19 @@ router.beforeEach((to, from, next) => {
     next()
   }
 })
+
+// router.beforeEach((to, from, next) => {
+//   if (to.matched.some(record => record.meta.requiresAdminCashier)) {
+//     if (roleId === '3') {
+//       next({
+//         path: '/demo'
+//       })
+//     } else {
+//       next()
+//     }
+//   } else {
+//     next()
+//   }
+// })
 
 export default router

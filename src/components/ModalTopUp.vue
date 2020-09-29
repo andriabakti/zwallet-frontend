@@ -2,6 +2,7 @@
   <b-modal id="modal-topup" hide-footer title="Top Up">
     <div v-if="!getStatusPin">
       <form @submit.prevent="checkPin" class="text-center">
+        <p>Enter your 6 digits PIN for confirmation</p>
         <PincodeInput v-model="pin" :length="6" placeholder="_" />
 
         <button
@@ -23,7 +24,7 @@
         <div class="form-group">
           <label for="">Bukti</label>
           <b-form-file
-            accept="image/*"
+            accept="image/jpeg, image/png, image/jpg"
             class="border-0"
             v-model="fileImage"
             :state="Boolean(fileImage)"
@@ -110,7 +111,7 @@ export default {
       formData.append('pin', this.pin)
       this.topup(formData)
         .then((response) => {
-          this.$toast.success('Topup success')
+          this.$toast.success('Top up request sent, please wait a few minutes')
           this.$bvModal.hide('modal-topup')
           this.myHistory()
         })

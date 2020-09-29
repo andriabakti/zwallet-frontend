@@ -24,15 +24,33 @@
         </div>
       </div>
     </div>
-    <div class="amount">{{ data.amount | currency }}</div>
+    <div
+      v-if="data.status === 1"
+      class="font-weight-bold"
+      :class="[
+        getMyProfile.id === data.receiverId ? 'text-success' : 'text-danger'
+      ]"
+    >
+      {{ getMyProfile.id === data.receiverId ? '+' : '-'
+      }}{{ data.amount | currency }}
+    </div>
+    <div
+      v-if="data.status === 2"
+      class="font-weight-bold"
+      :class="[data.statusTopup === 1 ? 'text-success' : 'text-info']"
+    >
+      {{ data.amount | currency }}
+    </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'CardTransaction',
   props: ['data'],
   computed: {
+    ...mapGetters('user', ['getMyProfile']),
     filterStatus() {
       let status = ''
       if (this.data.status === 1) {

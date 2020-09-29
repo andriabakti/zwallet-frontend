@@ -3,13 +3,15 @@ import History from '@/apis/History'
 // state
 const state = {
   allHistory: [],
-  myHistory: []
+  myHistory: [],
+  allTopUp: []
 }
 
 // getters
 const getters = {
   getAllHistory: (state) => state.allHistory,
-  getMyHistory: (state) => state.myHistory
+  getMyHistory: (state) => state.myHistory,
+  getAllTopUp: (state) => state.allTopUp
 }
 
 // actions
@@ -34,6 +36,29 @@ const actions = {
           root: true
         })
         commit('GET_ALL_HISTORY', err.response.data)
+        reject(err.response)
+      })
+    })
+  },
+  allTopUp({
+    commit,
+    dispatch
+  }) {
+    dispatch('changeIsLoading', true, {
+      root: true
+    })
+    return new Promise((resolve, reject) => {
+      History.allTopUp().then(response => {
+        dispatch('changeIsLoading', false, {
+          root: true
+        })
+        resolve(response.data)
+        commit('GET_ALL_TOPUP', response.data)
+      }).catch(err => {
+        dispatch('changeIsLoading', false, {
+          root: true
+        })
+        commit('GET_ALL_TOPUP', err.response.data)
         reject(err.response)
       })
     })
@@ -102,6 +127,30 @@ const actions = {
         reject(err.response)
       })
     })
+  },
+  changeStatus({
+    commit,
+    dispatch
+  }, {
+    id,
+    data
+  }) {
+    dispatch('changeIsLoading', true, {
+      root: true
+    })
+    return new Promise((resolve, reject) => {
+      History.changeStatus(id, data).then(response => {
+        dispatch('changeIsLoading', false, {
+          root: true
+        })
+        resolve(response.data)
+      }).catch(err => {
+        dispatch('changeIsLoading', false, {
+          root: true
+        })
+        reject(err.response)
+      })
+    })
   }
 
 }
@@ -121,6 +170,13 @@ const mutations = {
       state.myHistory = []
     } else {
       state.myHistory = payload.results
+    }
+  },
+  GET_ALL_TOPUP: (state, payload) => {
+    if (payload.message.sqlMessage === 'Data Not Found') {
+      state.allTopUp = []
+    } else {
+      state.allTopUp = payload.results
     }
   }
 

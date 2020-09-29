@@ -20,6 +20,7 @@ import VueSweetalert2 from 'vue-sweetalert2'
 // Import one of available themes
 import 'vue-toast-notification/dist/theme-sugar.css'
 import 'sweetalert2/dist/sweetalert2.min.css'
+import VueFilterDateFormat from 'vue-filter-date-format'
 
 Vue.use(VueToast, {
   position: 'top-right'
@@ -30,7 +31,23 @@ Vue.use(VueCurrencyFilter, {
 Vue.use(VueSweetalert2)
 Vue.mixin(swal)
 Vue.mixin(logout)
-
+Vue.use(VueFilterDateFormat, {
+  dayOfWeekNames: [
+    'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday',
+    'Friday', 'Saturday'
+  ],
+  dayOfWeekNamesShort: [
+    'Su', 'Mo', 'Tu', 'We', 'Tr', 'Fr', 'Sa'
+  ],
+  monthNames: [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ],
+  monthNamesShort: [
+    'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+  ]
+})
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 

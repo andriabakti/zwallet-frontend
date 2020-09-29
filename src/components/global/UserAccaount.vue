@@ -27,7 +27,7 @@
         </router-link>
       </div>
       <div class="phone" v-if="getMyProfile.phoneNumber">
-        {{ getMyProfile.phoneNumber }}
+        +62 {{ getMyProfile.phoneNumber }}
       </div>
       <router-link
         class="d-block"

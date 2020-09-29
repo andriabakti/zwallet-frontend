@@ -46,6 +46,11 @@ export default {
   methods: {
     ...mapActions(['changeStatusPin'])
   },
+  mounted() {
+    if (this.getMyProfile.roleId !== 2) {
+      this.$router.push({ name: 'Dashboard' })
+    }
+  },
   computed: {
     ...mapGetters('user', ['getMyProfile'])
   }

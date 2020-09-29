@@ -7,8 +7,20 @@
       <b-nav-item :to="{ name: 'Transfer' }" class="my-2 font-17">
         <b-icon icon="arrow-up" class="mr-3"></b-icon> Transfer</b-nav-item
       >
-      <b-nav-item :to="{ name: 'TopUp' }" class="my-2 font-17">
+      <b-nav-item
+        v-if="getMyProfile.roleId === 2"
+        :to="{ name: 'TopUp' }"
+        class="my-2 font-17"
+      >
         <b-icon icon="plus" class="mr-3"></b-icon> Top Up</b-nav-item
+      >
+
+      <b-nav-item
+        v-if="getMyProfile.roleId === 1"
+        :to="{ name: 'DataTopUp' }"
+        class="my-2 font-17"
+      >
+        <b-icon icon="shift" class="mr-3"></b-icon> Data Top Up</b-nav-item
       >
       <b-nav-item :to="{ name: 'Profile' }" class="my-2 font-17">
         <b-icon icon="person" class="mr-3"></b-icon> Profile</b-nav-item
@@ -22,7 +34,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'Sidebar',
   methods: {
@@ -34,6 +46,9 @@ export default {
   mounted() {
     this.interceptorsRequest()
     this.interceptorsResponse()
+  },
+  computed: {
+    ...mapGetters('user', ['getMyProfile'])
   }
 }
 </script>
