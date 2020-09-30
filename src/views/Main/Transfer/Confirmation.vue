@@ -23,7 +23,9 @@
           <CardInfo
             label="Balance Left"
             :main="
-              (getMyProfile.balance - getDetailTransaction.amount) | currency
+              (getMyProfile.balance - getDetailTransaction.amount === 0
+                ? '0'
+                : getMyProfile.balance - getDetailTransaction.amount) | currency
             "
           />
           <CardInfo
@@ -57,7 +59,9 @@
           <CardInfo
             label="Balance Left"
             :main="
-              (getMyProfile.balance - getDetailTransaction.amount) | currency
+              (getMyProfile.balance - getDetailTransaction.amount === 0
+                ? '0'
+                : getMyProfile.balance - getDetailTransaction.amount) | currency
             "
           />
           <CardInfo

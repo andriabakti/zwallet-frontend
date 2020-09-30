@@ -198,12 +198,12 @@ const actions = {
         Vue.$toast.error('Your session is expired, please login again')
         dispatch('logoutUser')
         router.push({
-          name: 'Home'
+          name: 'Login'
         })
       } else if (message === 'Only admins can access' && status_code === 403) {
         Vue.$toast.error('Opps... You not have permission!')
         router.push({
-          name: 'Home'
+          name: 'Login'
         })
       }
       return Promise.reject(err)

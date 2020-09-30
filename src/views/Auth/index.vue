@@ -65,7 +65,6 @@ export default {
 #left img {
   width: 500px;
   height: 530px;
-  margin-left: -55px;
 }
 #main-subtitle {
   font-weight: bold;

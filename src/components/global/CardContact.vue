@@ -45,6 +45,7 @@ export default {
   width: 60px;
   height: 60px;
 }
+
 .img-container img {
   width: 100%;
   height: 100%;

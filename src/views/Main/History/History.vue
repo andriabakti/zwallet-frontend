@@ -3,7 +3,7 @@
     <div class="title mb-4 d-flex justify-content-between">
       <span>Transaction History</span>
       <div>
-        Short:
+        Sort:
         <button
           @click="handleSort('desc')"
           class="btn btn-primary btn-sm shadow mr-2"
