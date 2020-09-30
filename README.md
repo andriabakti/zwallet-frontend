@@ -108,8 +108,7 @@ Contributions are what make the open source community such an amazing place to b
 
 > All Contributor Members of Advance Team
 
-| <a href="https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html" target="_blank">**Front-End Developer & Team Leader**</a> | <a href="https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html" target="_blank">**Full-Stack Developer**</a> | <a href="https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html" target="_blank">**Front-End Developer**</a> | 
-| :---: |:---:| :---:|:---:| :---:|
+| <a href="https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html" target="_blank">**Front-End Developer & Team Leader**</a> | <a href="https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html" target="_blank">**Full-Stack Developer**</a> | <a href="https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html" target="_blank">**Front-End Developer**</a>
 | <a href="https://github.com/andriabakti" target="_blank">`https://github.com/andriabakti`</a> | <a href="https://github.com/joonacode" target="_blank">`https://github.com/joonacode`</a> | <a href="https://github.com/joonacode" target="_blank">`https://github.com/AgungWicaksonoPutro`</a>
 
 ---
