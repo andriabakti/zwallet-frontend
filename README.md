@@ -28,8 +28,7 @@
 
 ## About The Project
 
-tokofuku is an e-wallet website that is made specifically for banking needs, with many features to support online transactions
-[Demo Click Here](https://zwallet.fwdev.online)
+Zwallet is an application that focussing in banking needs for all users the world. [Demo Click Here](https://zwallet.fwdev.online)
 
 Here's why:
 
@@ -96,6 +95,7 @@ Contributions are what make the open source community such an amazing place to b
 - [Core-js](https://www.npmjs.com/package/core-js)
 - [vue-currency-filter](https://www.npmjs.com/package/vue-currency-filter)
 - [vue-multiselect](https://www.npmjs.com/package/vue-multiselect)
+- [vue-pincode-input](https://www.npmjs.com/package/vue-pincode-input)
 - [vue-owl-carousel](https://www.npmjs.com/package/xx-vue-owl-carousel)
 - [vue-sweetalert](https://www.npmjs.com/search?q=vue-sweetalert)
 - [vue-toast-notification](https://www.npmjs.com/package/vue-toast-notification)
