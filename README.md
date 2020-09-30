@@ -28,7 +28,7 @@
 
 ## About The Project
 
-tokofuku is an online shop website that is made specifically for e-commerce purposes, for many features to support transactions in online stores
+tokofuku is an e-wallet website that is made specifically for banking needs, with many features to support online transactions
 [Demo Click Here](https://zwallet.fwdev.online)
 
 Here's why:
