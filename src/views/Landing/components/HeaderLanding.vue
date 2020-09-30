@@ -11,9 +11,12 @@
                 We bring you a mobile app for banking problems that oftenly
                 wasting much of your times.
               </p>
-              <button class="btn btn-light2 px-4 py-2 rounded-2 mt-3">
+              <router-link
+                :to="{ name: 'Login' }"
+                class="btn text-decoration-none btn-light2 px-4 py-2 rounded-2 mt-3"
+              >
                 Try It Free
-              </button>
+              </router-link>
             </div>
           </div>
           <div class="col-lg-6">
