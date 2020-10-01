@@ -1,46 +1,93 @@
 <template>
   <div class="col-md-5" id="right">
+    <div>
+      <router-link
+        :to="{ name: 'Login' }"
+        class="btn btn-sm btn-primary btn-shadow mb-3"
+        >Back to login</router-link
+      >
+    </div>
+
     <label id="right-subtitle">
-      Did You Forgot Your Password?
-      Don't Worry, You Can Reset Your
-      Password In a Minutes.
+      Did You Forgot Your Password? Don't Worry, You Can Reset Your Password In
+      a Minutes.
     </label>
     <label id="right-description">
-      Now you can create a new password for your Zwallet
-      account. Type your password twice so we can confirm your
-      new password.
+      Now you can create a new password for your Zwallet account. Type your
+      password twice so we can confirm your new password.
     </label>
     <div id="main">
-      <div class="form">
-        <div class="form-group">
-          <input type="email" v-model="email" aria-describedby="emailHelp" placeholder="Enter your e-mail">
+      <form @submit.prevent="handleForgotPassword">
+        <div class="form">
+          <div class="form-group">
+            <input
+              type="email"
+              v-model="email"
+              aria-describedby="emailHelp"
+              placeholder="Enter your e-mail"
+            />
+          </div>
         </div>
-      </div>
-      <div class="button">
-        <button id="submit-btn">Confirm</button>
-      </div>
+        <div class="button">
+          <button
+            type="submit"
+            class="btn"
+            :disabled="!checkFilled"
+            :class="[checkFilled ? 'btn-primary' : 'btn-secondary']"
+          >
+            Confirm
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
-  name: 'ForgotPassword'
+  data() {
+    return {
+      email: ''
+    }
+  },
+  methods: {
+    ...mapActions('auth', ['forgotPassword']),
+    handleForgotPassword() {
+      this.forgotPassword({ email: this.email })
+        .then((response) => {
+          this.$toast.success(
+            'A link to change the password has been sent to your email'
+          )
+          this.email = ''
+          this.$router.push({ name: 'Login' })
+        })
+        .catch((err) => {
+          this.$toast.error(err.data.message)
+          this.email = ''
+        })
+    }
+  },
+  computed: {
+    checkFilled() {
+      return !!this.email
+    }
+  }
 }
 </script>
 
 <style scoped>
 #right {
-  padding: 100px 100px 50px 50px;
+  padding: 100px 40px 50px 40px;
   display: flex;
   flex-direction: column;
   justify-content: left;
-  background:#FAFCFF;
+  background: #fafcff;
 }
 #right-subtitle {
   font-weight: bold;
   font-size: 24px;
-  color: #3A3D42;
+  color: #3a3d42;
 }
 #right-description {
   font-size: 16px;
@@ -56,7 +103,7 @@ export default {
   font-size: 16px;
   border-style: none;
   border-bottom: 1.5px solid rgba(169, 169, 169, 0.6);
-  background: #FAFCFF;
+  background: #fafcff;
   margin-top: 40px;
 }
 #forgot {
@@ -83,8 +130,8 @@ export default {
 }
 /* Inactive Button */
 #submit-btn {
-  background: #DADADA;
-  color: #88888F;
+  background: #dadada;
+  color: #88888f;
 }
 /* Active Button */
 /* .button-hover {

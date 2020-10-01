@@ -1,99 +1,104 @@
 <template>
-  <div class="col-md-9" id="main">
-    <div id="card">
-      <div class="head">
-        <label class="title">Change Password</label>
-        <p class="describe">
-          You must enter your current password and then<br>
-          type your new pasword twice.
-        </p>
-      </div>
-      <div class="body">
-        <div class="form">
-          <div class="form-group">
-            <input type="password" placeholder="Current password">
-          </div>
-          <div class="form-group">
-            <input type="password" placeholder="New password">
-          </div>
-          <div class="form-group">
-            <input type="password" placeholder="Repeat new password">
-          </div>
+  <CardMainRight title="Change Password">
+    <template #description>
+      You must enter your current password and then type your new password
+      twice.
+    </template>
+    <template #body>
+      <router-link
+        class="btn btn-primary shadow btn-sm"
+        :to="{ name: 'Profile' }"
+        >Back</router-link
+      >
+      <div class="row mt-5">
+        <div class="col-md-8 mx-auto">
+          <form @submit.prevent="handleChangePassword">
+            <div class="form-group">
+              <input
+                v-model="currentPassword"
+                type="password"
+                class="form-control"
+                placeholder="Current Password"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                v-model="newPassword"
+                type="password"
+                class="form-control"
+                placeholder="New Password"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                v-model="repeatNewPassword"
+                type="password"
+                class="form-control"
+                placeholder="Repeat New Password"
+              />
+            </div>
+            <button
+              type="submit"
+              class="btn btn-block mt-5"
+              :disabled="!checkFilled"
+              :class="[checkFilled ? 'btn-primary' : 'btn-secondary']"
+            >
+              Change Password
+            </button>
+          </form>
         </div>
-        <div class="button">
-          <button id="submit-btn">Change Password</button>
-        </div>
       </div>
-    </div>
-  </div>
+    </template>
+  </CardMainRight>
 </template>
 
 <script>
+import CardMainRight from '@/components/CardMainRight'
+import { mapActions } from 'vuex'
 export default {
-  name: 'ChangePassword'
+  name: 'ChangePassword',
+  data() {
+    return {
+      currentPassword: '',
+      newPassword: '',
+      repeatNewPassword: ''
+    }
+  },
+  components: {
+    CardMainRight
+  },
+  methods: {
+    ...mapActions('user', ['changePassword']),
+    handleChangePassword() {
+      const dataPassword = {
+        currentPassword: this.currentPassword,
+        newPassword: this.newPassword,
+        confirmPassword: this.repeatNewPassword
+      }
+      this.changePassword(dataPassword)
+        .then((response) => {
+          this.$toast.success('Password changed successfully')
+          this.$router.push({ name: 'Profile' })
+          this.currentPassword = ''
+          this.newPassword = ''
+          this.repeatNewPassword = ''
+        })
+        .catch((err) => {
+          this.$toast.error(err.data.message)
+        })
+    }
+  },
+  computed: {
+    checkFilled() {
+      return !!(
+        this.currentPassword &&
+        this.newPassword &&
+        this.repeatNewPassword
+      )
+    }
+  }
 }
 </script>
 
 <style scoped>
-/* Main Card */
-#card {
-  height: 110vh;
-  background: #FFFFFF;
-  border-radius: 25px;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
-  margin: 25px 120px 20px 20px;
-  padding: 30px 30px 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-/* Head Title */
-.title {
-  font-weight: bold;
-  font-size: 18px;
-  color: #3A3D42;
-}
-/* Head Describe */
-.describe {
-  font-size: 16px;
-  line-height: 30px;
-  color: #7A7886;
-  margin-top: 15px;
-}
-
-.body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-/* Form */
-.form {
-  display: flex;
-  flex-direction: column;
-}
-.form-group input {
-  width: 430px;
-  height: 37px;
-  font-size: 16px;
-  border-style: none;
-  border-bottom: 2px solid #7E98DF;
-  margin: 40px 0 0;
-}
-
-/* Button */
-.button {
-  margin-top: 70px;
-}
-.button button {
-  width: 430px;
-  height: 50px;
-  border: none;
-  border-radius: 12px;
-  box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
-  background: #7E98DF;
-  text-align: center;
-  font-weight: bold;
-  font-size: 18px;
-  color: #ffffff;
-}
 </style>

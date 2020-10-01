@@ -1,39 +1,55 @@
 <template>
-    <b-row class="no-gutters history mx-3 p-4">
-        <b-col lg="10">
-            <div class="title">Transaction History</div>
-        </b-col>
-        <b-col lg="2">
-            <router-link to="/foo">See all</router-link>
-        </b-col>
-        <b-col lg="12 mt-3">
-            <CardTransaction/>
-        </b-col>
-    </b-row>
+  <div class="card history px-2 py-3 border-0">
+    <div class="card-body">
+      <div class="d-flex justify-content-between mb-4">
+        <div class="title">Transaction History</div>
+        <router-link :to="{ name: 'History' }">See all</router-link>
+      </div>
+      <div
+        v-if="getMyHistory.length === 0"
+        class="font-weight-bold text-center font-18"
+      >
+        History is empty
+      </div>
+      <div v-if="getMyHistory.length > 0">
+        <div
+          class="mb-4"
+          v-for="history in getMyHistory.slice(0, 5)"
+          :key="history.id"
+        >
+          <CardTransaction :data="history" />
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import CardTransaction from '../../../../components/global/CardTransaction'
 export default {
   name: 'historyTransaction',
   components: {
     CardTransaction
+  },
+  computed: {
+    ...mapGetters('history', ['getMyHistory'])
   }
 }
 </script>
 
 <style scoped>
-.history{
-    background: #FFFFFF;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
-    border-radius: 25px;
+.history {
+  background: #ffffff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 25px;
 }
-.title{
+.title {
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
   line-height: 25px;
-  color: #3A3D42;
+  color: #3a3d42;
   letter-spacing: 1px;
 }
 </style>

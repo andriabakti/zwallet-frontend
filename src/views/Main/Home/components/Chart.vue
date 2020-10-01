@@ -1,12 +1,12 @@
 <template>
-    <b-row class="no-gutters mx-4 mt-3">
-        <b-col lg="7">
-            <ChartTransaction/>
-        </b-col>
-        <b-col lg="5">
-            <HistoryTransaction/>
-        </b-col>
-    </b-row>
+  <div class="row mt-3">
+    <div class="col-lg-6 mb-3">
+      <ChartTransaction />
+    </div>
+    <div class="col-lg-6 mb-3">
+      <HistoryTransaction />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -22,5 +22,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

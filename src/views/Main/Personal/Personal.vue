@@ -1,123 +1,77 @@
 <template>
-  <div class="col-lg-9" id="main">
-    <div id="card">
-      <div class="head">
-        <label class="title">Personal Information</label>
-        <p class="describe">
-          We got your personal information from the sign<br>
-          up process. If you want to make changes on<br>
-          your information, contact our support.
-        </p>
+  <CardMainRight title="Information">
+    <template #description
+      >We got your personal information from the sign up proccess. If you want
+      to make changes on your information, contact our support.</template
+    >
+    <template #body>
+      <router-link
+        class="btn btn-primary shadow btn-sm mr-2 mb-3"
+        :to="{ name: 'Profile' }"
+        >Back</router-link
+      >
+      <button
+        type="button"
+        v-b-modal.modal-user
+        class="btn btn-primary btn-sm shadow mb-3"
+      >
+        Update Profile
+      </button>
+      <div class="row">
+        <CardInfo
+          label="First Name"
+          :main="
+            getMyProfile.firstName
+              ? getMyProfile.firstName
+              : 'First name is not set'
+          "
+        />
+        <CardInfo
+          label="Last Name"
+          :main="
+            getMyProfile.lastName
+              ? getMyProfile.lastName
+              : 'Last name is not set'
+          "
+        />
+        <CardInfo label="Verified E-mail" :main="getMyProfile.email" />
+        <div class="col-md-12">
+          <div class="card border-0 shadow-sm">
+            <div class="card-body">
+              <label for="" class="font-14">Phone Number</label>
+              <div class="d-flex justify-content-between">
+                <p class="mb-0 font-15 font-weight-bold">
+                  {{
+                    getMyProfile.phoneNumber
+                      ? getMyProfile.phoneNumber
+                      : 'No phone number yet, please add a new one'
+                  }}
+                </p>
+                <router-link :to="{ name: 'ManageNumber' }">Manage</router-link>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="info">
-        <div id="info-card">
-          <div class="sub">
-            <label class="heading">First Name</label>
-            <span>Robert</span>
-          </div>
-        </div>
-        <div id="info-card">
-          <div class="sub">
-            <label class="heading">Last Name</label>
-            <span>Chandler</span>
-          </div>
-        </div>
-        <div id="info-card">
-          <div class="sub">
-            <label class="heading">Verified E-mail</label>
-            <span>pewdiepie1@gmail.com</span>
-          </div>
-        </div>
-        <div id="info-card">
-          <div class="sub">
-            <label class="heading">Phone Number</label>
-            <span>+62 813-9387-7946</span>
-          </div>
-          <div class="manage">
-            <span @click="toManage">Manage</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    </template>
+  </CardMainRight>
 </template>
 
 <script>
+import CardMainRight from '@/components/CardMainRight'
+import CardInfo from '@/components/CardInfo'
+import { mapGetters } from 'vuex'
 export default {
   name: 'Personal',
-  methods: {
-    toManage () {
-      this.$router.push('manage-number')
-    }
+  components: {
+    CardInfo,
+    CardMainRight
+  },
+  computed: {
+    ...mapGetters('user', ['getMyProfile'])
   }
 }
 </script>
 
 <style scoped>
-/* Main Card */
-#card {
-  height: 110vh;
-  background: #FFFFFF;
-  border-radius: 25px;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
-  margin: 25px 110px 20px 20px;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-/* Head Title */
-.title {
-  font-weight: bolder;
-  font-size: 18px;
-  color: #3A3D42;
-}
-/* Head Describe */
-.describe {
-  font-size: 16px;
-  line-height: 30px;
-  color: #7A7886;
-  margin-top: 15px;
-}
-
-/* Menu */
-.info {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-}
-#info-card {
-  width: 100%;
-  height: 95px;
-  background: #FFFFFF;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
-  border-radius: 10px;
-  border: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-  margin: 17px 0 0;
-}
-.sub {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-.heading {
-  font-size: 16px;
-  color: #7A7886;
-}
-.sub span {
-  font-weight: bold;
-  font-size: 19px;
-  color: #514F5B;
-}
-.manage {
-  font-weight: 600;
-  font-size: 16px;
-  color: #6379F4;
-  cursor: pointer;
-}
 </style>

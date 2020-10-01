@@ -1,106 +1,116 @@
 <template>
-  <div class="col-md-9" id="main">
-    <div id="card">
-      <div class="head">
-        <label class="title">Change PIN</label>
-        <p class="describe">
-          Enter your current 6 digits Zwallet PIN below to<br>
-          continue to the next steps.
-        </p>
-      </div>
-      <div class="body">
-        <div class="pin-form">
-          <input type="number" class="form-control-lg" maxlength="1" placeholder="__">
-          <input type="number" class="form-control-lg" maxlength="1" placeholder="__">
-          <input type="number" class="form-control-lg" maxlength="1" placeholder="__">
-          <input type="number" class="form-control-lg" maxlength="1" placeholder="__">
-          <input type="number" class="form-control-lg" maxlength="1" placeholder="__">
-          <input type="number" class="form-control-lg" maxlength="1" placeholder="__">
+  <div>
+    <CardMainRight title="Change PIN" v-if="!isOk">
+      <template #description>
+        Enter your current 6 digits Zwallet PIN below to continue to the next
+        steps.
+      </template>
+      <template #body>
+        <router-link
+          class="btn btn-primary shadow btn-sm"
+          :to="{ name: 'Profile' }"
+          >Back</router-link
+        >
+        <div class="row mt-5">
+          <div class="col-md-8 mx-auto">
+            <form @submit.prevent="checkPin" class="text-center">
+              <PincodeInput v-model="oldPin" :length="6" placeholder="_" />
+
+              <button
+                type="submit"
+                class="btn btn-block mt-5"
+                :disabled="!checkFilled"
+                :class="[checkFilled ? 'btn-primary' : 'btn-secondary']"
+              >
+                Change PIN
+              </button>
+            </form>
+          </div>
         </div>
-        <div class="button">
-          <button id="submit-btn">Continue</button>
+      </template>
+    </CardMainRight>
+    <CardMainRight title="Change PIN" v-if="isOk">
+      <template #description>
+        Type your new 6 digits security PIN to use in Zwallet.
+      </template>
+      <template #body>
+        <div class="row mt-5">
+          <div class="col-md-8 mx-auto">
+            <form @submit.prevent="handleChangePin" class="text-center">
+              <PincodeInput v-model="newPin" :length="6" placeholder="_" />
+
+              <button
+                type="submit"
+                class="btn btn-block mt-5"
+                :disabled="!checkFilled"
+                :class="[checkFilled ? 'btn-primary' : 'btn-secondary']"
+              >
+                Change PIN
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
-    </div>
+      </template>
+    </CardMainRight>
   </div>
 </template>
 
 <script>
+import CardMainRight from '@/components/CardMainRight'
+import PincodeInput from 'vue-pincode-input'
+import { mapActions, mapGetters } from 'vuex'
 export default {
-  name: 'ChangePin'
+  data() {
+    return {
+      oldPin: '',
+      newPin: '',
+      isOk: false
+    }
+  },
+  components: {
+    CardMainRight,
+    PincodeInput
+  },
+  methods: {
+    ...mapActions('user', ['changePin', 'myProfile']),
+    checkPin() {
+      if (this.oldPin !== this.getMyProfile.pin) {
+        this.$toast.error('Current PIN wrong')
+        this.oldPin = ''
+        this.isOk = false
+      } else {
+        this.isOk = true
+        this.$toast.success('Current PIN ok, please change your PIN')
+      }
+    },
+    handleChangePin() {
+      const dataPin = {
+        pin: this.oldPin,
+        newPin: this.newPin
+      }
+      this.changePin(dataPin)
+        .then((response) => {
+          this.$toast.success('PIN changed successfully')
+          this.$router.push({ name: 'Profile' })
+          this.myProfile()
+          this.oldPin = ''
+          this.newPin = ''
+        })
+        .catch((err) => {
+          this.$toast.error(err.data.message)
+          this.oldPin = ''
+          this.newPin = ''
+        })
+    }
+  },
+  computed: {
+    ...mapGetters('user', ['getMyProfile']),
+    checkFilled() {
+      return !!this.oldPin
+    }
+  }
 }
 </script>
 
 <style scoped>
-/* Main Card */
-#card {
-  height: 110vh;
-  background: #FFFFFF;
-  border-radius: 25px;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
-  margin: 25px 120px 20px 20px;
-  padding: 30px 30px 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-/* Head Title */
-.title {
-  font-weight: bold;
-  font-size: 18px;
-  color: #3A3D42;
-}
-/* Head Describe */
-.describe {
-  font-size: 16px;
-  line-height: 30px;
-  color: #7A7886;
-  margin-top: 15px;
-}
-
-.body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 80px;
-}
-/* Form */
-.pin-form {
-  width: 430px;
-  display: flex;
-  justify-content: space-between;
-}
-.pin-form input {
-  width: 53px;
-  height: 65px;
-  border-radius: 10px;
-  border: 1px solid rgba(169, 169, 169, 0.6);
-  background: #FFFFFF;
-  text-align: center;
-  font-weight: bold;
-  font-size: 30px;
-  color: #3A3D42;
-}
-.pin-form input::-webkit-outer-spin-button,
-.pin-form input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Button */
-.button {
-  margin-top: 70px;
-}
-.button button {
-  width: 430px;
-  height: 50px;
-  border: none;
-  border-radius: 12px;
-  box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
-  background: #7E98DF;
-  text-align: center;
-  font-weight: bold;
-  font-size: 18px;
-  color: #ffffff;
-}
 </style>
