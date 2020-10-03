@@ -1,4 +1,3 @@
-<!-- PROJECT LOGO -->
 <br />
 <p align="center">
   <h1 align="center">frontend-zwallet</h1>
@@ -11,6 +10,8 @@
     <a href="https://github.com/joonacode/Frontend-Zwallet/issues">Request Feature</a>
   </p>
 </p>
+
+![Image Banner](https://github.com/joonacode/frontend-tokofuku/blob/master/smartmockups_kft9vqqj.png)
 
 ## Table of Contents
 
@@ -39,6 +40,8 @@ Here's why:
 - great performance
 - specially designed for e-wallet needs
 - reusable components
+
+![Image Banner](https://github.com/joonacode/frontend-tokofuku/blob/master/smartmockups_kfta9h30.jpg)
 
 Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue.
 
