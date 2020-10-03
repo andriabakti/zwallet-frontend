@@ -11,7 +11,7 @@
   </p>
 </p>
 
-![Image Banner](https://github.com/joonacode/frontend-tokofuku/blob/master/smartmockups_kft9vigu.png)
+![Image Banner](https://github.com/joonacode/Frontend-Zwallet/blob/master/smartmockups_kft9vigu.png)
 
 ## Table of Contents
 
@@ -41,7 +41,7 @@ Here's why:
 - specially designed for e-wallet needs
 - reusable components
 
-![Image Banner](https://github.com/joonacode/frontend-tokofuku/blob/master/smartmockups_kfta9h30.jpg)
+![Image Banner](https://github.com/joonacode/Frontend-Zwallet/blob/master/smartmockups_kfta9h30.jpg)
 
 Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue.
 
