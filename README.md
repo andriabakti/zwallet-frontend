@@ -111,9 +111,9 @@ Contributions are what make the open source community such an amazing place to b
 
 > All Contributor Members of Advance Team
 
-<a href="https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html" target="_blank">**Front-End Developer & Team Leader**</a> | <a href="https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html" target="_blank">**Full-Stack Developer**</a> | <a href="https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html" target="_blank">**Front-End Developer**</a>
+| <a href="https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html" target="_blank">**Front-End Developer & Team Leader**</a> | <a href="https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html" target="_blank">**Full-Stack Developer**</a> | <a href="https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html" target="_blank">**Front-End Developer**</a> | 
 | :---: |:---:| :---:|:---:| :---:|
-[![Front-End Developer](https://avatars2.githubusercontent.com/u/67205885?s=460&v=44)](http://fvcproductions.com) | [![FVCproductions](https://avatars3.githubusercontent.com/u/57256855?s=460&u=098d4a10d90859d3581913797d790c1111ee71cb&v=4)](http://fvcproductions.com) | [![Front-End Developer](https://avatars2.githubusercontent.com/u/61189034?s=460&u=9d2c8505c6e8635c148cf411a5b2c3d8c596711d&v=4)](http://fvcproductions.com)
-<a href="https://github.com/andriabakti" target="_blank">`https://github.com/andriabakti`</a> | <a href="https://github.com/joonacode" target="_blank">`https://github.com/joonacode`</a> | <a href="https://github.com/joonacode" target="_blank">`https://github.com/AgungWicaksonoPutro`</a>
+| [![Front-End Developer](https://avatars2.githubusercontent.com/u/67205885?s=460&v=44)](http://fvcproductions.com) | [![FVCproductions](https://avatars3.githubusercontent.com/u/57256855?s=460&u=098d4a10d90859d3581913797d790c1111ee71cb&v=4)](http://fvcproductions.com) | [![Front-End Developer](https://avatars2.githubusercontent.com/u/61189034?s=460&u=9d2c8505c6e8635c148cf411a5b2c3d8c596711d&v=4)](http://fvcproductions.com)  |
+| <a href="https://github.com/andriabakti" target="_blank">`https://github.com/andriabakti`</a> | <a href="https://github.com/joonacode" target="_blank">`https://github.com/joonacode`</a> | <a href="https://github.com/joonacode" target="_blank">`https://github.com/AgungWicaksonoPutro`</a> |
 
 ---
